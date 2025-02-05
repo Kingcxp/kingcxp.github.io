@@ -12,6 +12,11 @@ projects:
     name: GoneBot
     desc: 简单、强大的 Golang 聊天机器人框架
     link: https://gonebot-dev.github.io
+
+  - icon: https://www.nmo.net.cn/wp-content/uploads/2023/12/nmo_logo.png
+    name: NMO
+    desc: 南京大学Minecraft协会
+    link: https://www.nmo.net.cn/
 ---
 
 <Catalog />
