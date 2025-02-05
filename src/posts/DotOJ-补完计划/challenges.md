@@ -1,7 +1,7 @@
 ---
 title: 某 CQ の奇妙冒险
 date: 2022-11-06
-icon: ruler
+icon: person-chalkboard
 order: 1
 category:
   - CPL DotOJ 补完计划

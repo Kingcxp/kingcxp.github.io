@@ -1,7 +1,7 @@
 ---
 title: 控制时空复杂度：和超时爆空间说拜拜
 date: 2022-11-22
-icon: ruler
+icon: circle-radiation
 order: 2
 category:
   - C 语言学习分享

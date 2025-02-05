@@ -1,7 +1,7 @@
 ---
 title: 南哪 2022-6-recursion EX 搜索
 date: 2022-11-13
-icon: ruler
+icon: face-grin-beam-sweat
 order: 9
 category:
   - CPL DotOJ 补完计划

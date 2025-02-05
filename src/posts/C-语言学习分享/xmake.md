@@ -1,7 +1,7 @@
 ---
 title: XMake，你的 SDL2 项目打包好帮手
 date: 2023-12-30
-icon: ruler
+icon: atom
 order: 4
 category:
   - C 语言学习分享

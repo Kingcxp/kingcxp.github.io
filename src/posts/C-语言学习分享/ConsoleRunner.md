@@ -1,7 +1,7 @@
 ---
 title: 小游戏项目不知道怎么写？我来助你！
 date: 2024-01-22
-icon: ruler
+icon: person-running
 order: 5
 category:
   - C 语言学习分享

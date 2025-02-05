@@ -1,7 +1,7 @@
 ---
-title: 南哪 2022-8-pointer EX
+title: 南哪 2022-8-pointer EX 动态数组
 date: 2022-11-21
-icon: ruler
+icon: face-grin-beam-sweat
 order: 14
 category:
   - CPL DotOJ 补完计划

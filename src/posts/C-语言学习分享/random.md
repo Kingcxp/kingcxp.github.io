@@ -1,7 +1,7 @@
 ---
 title: 随机数据生成 & 正确性验证
 date: 2022-11-13
-icon: ruler
+icon: ranking-star
 order: 1
 category:
   - C 语言学习分享

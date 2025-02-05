@@ -1,7 +1,7 @@
 ---
 title: 关于 CRLF 和 LF
 date: 2023-01-12
-icon: ruler
+icon: bug
 order: 3
 category:
   - C 语言学习分享

@@ -1,7 +1,7 @@
 ---
 title: 南哪 2022-8-pointer EX 手搓链表
 date: 2022-11-18
-icon: ruler
+icon: face-grin-beam-sweat
 order: 13
 category:
   - CPL DotOJ 补完计划

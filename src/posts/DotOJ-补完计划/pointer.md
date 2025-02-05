@@ -1,7 +1,7 @@
 ---
 title: 逃不掉的语法小技巧 指针
 date: 2022-11-13
-icon: ruler
+icon: hand-pointer
 order: 10
 category:
   - CPL DotOJ 补完计划
