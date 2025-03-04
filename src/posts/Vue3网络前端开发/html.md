@@ -1,7 +1,7 @@
 ---
 title: 2. HTML 元素设计基础
 date: 2025-03-04
-icon: fa-html5
+icon: mosquito-net
 order: 3
 category:
   - Vue3 网络前端开发

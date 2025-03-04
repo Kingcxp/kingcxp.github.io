@@ -1,7 +1,7 @@
 ---
 title: 4. Vue3 script & Axios
 date: 2025-03-04
-icon: fa-js
+icon: file-code
 order: 5
 category:
   - Vue3 网络前端开发

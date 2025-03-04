@@ -1,7 +1,7 @@
 ---
 title: 3. CSS 页面元素设计基础
 date: 2025-03-04
-icon: fa-css3-alt
+icon: cat
 order: 4
 category:
   - Vue3 网络前端开发
