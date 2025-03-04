@@ -1,7 +1,7 @@
 ---
 title: 2. HTML 元素设计基础
 date: 2025-03-04
-icon: code-blocks-outline
+icon: fa-html5
 order: 3
 category:
   - Vue3 网络前端开发
