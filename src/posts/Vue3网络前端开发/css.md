@@ -1,7 +1,7 @@
 ---
-title: 2. CSS 页面元素设计基础
+title: 3. CSS 页面元素设计基础
 date: 2025-03-04
-icon: css
+icon: style-outline
 order: 4
 category:
   - Vue3 网络前端开发
@@ -303,12 +303,12 @@ div {
 #### 盒子设计 & 布局精通
 我现在有一个 200x200 的 `div`，它什么设计都没有！这太难看了！
 
-<div width: 200px;
-  height: 200px"></div>
+<div style="width: 200px;
+  height: 200px;"></div>
 
 ```html
-<div width: 200px;
-  height: 200px"></div>
+<div style="width: 200px;
+  height: 200px;"></div>
 ```
 
 我如果想实现一个面板一样的，看上去像是悬浮起来一样的板块，应该用哪些东西呢？
