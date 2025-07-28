@@ -1,6 +1,6 @@
 ---
 home: true
-layout: BlogHome
+layout: Blog
 icon: house
 title: 主页
 heroImage: https://clipartix.com/wp-content/uploads/2018/03/thinking-gif-2018-40.gif

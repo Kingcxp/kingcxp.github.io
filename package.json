@@ -11,16 +11,16 @@
     "docs:update-package": "npx vp-update"
   },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.19",
+    "@vuepress/bundler-vite": "2.0.0-rc.24",
     "sass-embedded": "^1.83.0",
-    "vue": "^3.5.13",
-    "vuepress": "2.0.0-rc.19",
-    "vuepress-theme-hope": "2.0.0-rc.71"
+    "vue": "^3.5.18",
+    "vuepress": "2.0.0-rc.24",
+    "vuepress-theme-hope": "2.0.0-rc.94"
   },
   "dependencies": {
-    "@vuepress/plugin-prismjs": "^2.0.0-rc.74",
-    "@vuepress/plugin-revealjs": "^2.0.0-rc.74",
-    "@vuepress/plugin-slimsearch": "^2.0.0-rc.74",
+    "@vuepress/plugin-prismjs": "2.0.0-rc.112",
+    "@vuepress/plugin-revealjs": "2.0.0-rc.112",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.112",
     "katex": "^0.16.21",
     "mermaid": "^11.4.1"
   }

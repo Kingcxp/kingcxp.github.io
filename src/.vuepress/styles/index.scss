@@ -1,1 +1,15 @@
 // place your custom styles here
+
+@font-face {
+  font-family: "Cubic_11";
+  src: url("./Cubic_11.ttf");
+}
+
+@font-face {
+  font-family: "Ark Pixel";
+  src: url("./ark-pixel.ttf");
+}
+
+* {
+  font-family: "Ark Pixel", "Cubic_11", system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
