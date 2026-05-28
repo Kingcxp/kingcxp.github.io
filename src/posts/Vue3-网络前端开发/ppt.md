@@ -110,7 +110,7 @@ html {
   <p class="text">你可能会在你的浏览器右侧或底部看到类似这样的界面：</p>
 </div>
 
-<img class="img-fit" src="./assets/developer-tool.png" />
+<img class="img-fit" src="/vue3-assets/developer-tool.png" />
 <p class="img-tip">浏览器中的开发者工具</p>
 
 --
@@ -120,7 +120,7 @@ html {
   <p class="text">它可以帮助你快速地浏览网页设计、js代码、网络请求状态等：</p>
 </div>
 
-<img class="img-fit" src="./assets/developer-tool-options.png" />
+<img class="img-fit" src="/vue3-assets/developer-tool-options.png" />
 <p class="img-tip">开发者工具中的选项</p>
 
 --
@@ -130,7 +130,7 @@ html {
   <p class="text">你可能会发现，开发者工具为你标出了这个元素在页面中的位置，以及它的一些元素细节：</p>
 </div>
 
-<img class="img-fit" src="./assets/developer-tool-elements.png"/>
+<img class="img-fit" src="/vue3-assets/developer-tool-elements.png"/>
 <p class="img-tip">开发者工具指出了元素位置、id 和 class 属性和 CSS 样式</p>
 
 --
@@ -140,7 +140,7 @@ html {
   <p class="text font-larger">“这些网站是怎么被写出来的？我有机会能写出这样的网页吗？”</p>
 </div>
 
-<img class="img-fit" src="./assets/element-plus.png" />
+<img class="img-fit" src="/vue3-assets/element-plus.png" />
 <p class="img-tip">看上去似乎非常精美的网站</p>
 
 --
@@ -151,10 +151,10 @@ html {
   <p class="text">逐渐为大家展开目前最流行的前端框架之一 —— Vue.js</p>
 </div>
 <div class="box-four-combo">
-  <img class="four-combo" src="./assets/html-icon.png"/>
-  <img class="four-combo" src="./assets/css-icon.png"/>
-  <img class="four-combo" src="./assets/js-icon.png"/>
-  <img class="four-combo" src="./assets/vue-icon.png"/>
+  <img class="four-combo" src="/vue3-assets/html-icon.png"/>
+  <img class="four-combo" src="/vue3-assets/css-icon.png"/>
+  <img class="four-combo" src="/vue3-assets/js-icon.png"/>
+  <img class="four-combo" src="/vue3-assets/vue-icon.png"/>
 </div>
 
 ---
@@ -168,7 +168,7 @@ html {
   <p class="text">这是一种用于创建网页的标准标记语言。HTML由浏览器解析并展示给用户：</p>
 </div>
 
-<img class="img-fit" src="./assets/html-structure.jpg" />
+<img class="img-fit" src="/vue3-assets/html-structure.jpg" />
 <p class="img-tip">[菜鸟教程] HTML 文件结构</p>
 
 <div class="box-centered">
@@ -190,7 +190,7 @@ html {
     </p>
     一个完整的闭合标签及其内部子元素一同被称为一个元素
     当然，一个标签如果没有内容，它也可以在开始标签中直接关闭：
-    <img src="./assets/html-icon.png" />
+    <img src="/vue3-assets/html-icon.png" />
     <!-- ! HTML 也可以像这样添加注释 -->
   </div>
   ```
@@ -255,9 +255,9 @@ html {
   <p class="text">可以用 width 和 height 属性来指定图片的宽高</p>
 
   ```html
-  <img src="./assets/html-icon.png" alt="html" width="128px" height="128px" />
+  <img src="/vue3-assets/html-icon.png" alt="html" width="128px" height="128px" />
   ```
-  <img src="./assets/html-icon.png" alt="html" width="128px" height="128px" />
+  <img src="/vue3-assets/html-icon.png" alt="html" width="128px" height="128px" />
 </div>
 
 --
@@ -307,7 +307,7 @@ html {
   <p class="text">但是，这样的代码没有任何语义，实际读起来，总是会让人头晕眼花😵</p>
   <p class="text">而且，这样的代码在无障碍阅读上，也会让阅读器无法理解页面内容</p>
   <p class="text">这样写代码的最终结果只会同时痛击开发者和用户的大脑。</p>
-  <img class="img-fit" src="./assets/mamashengde.jpeg" />
+  <img class="img-fit" src="/vue3-assets/mamashengde.jpeg" />
   <p class="img-tip">大脑被强碱</p>
 </div>
 
@@ -317,7 +317,7 @@ html {
   <p class="title">块级语义标签</p>
   <p class="text">它们可以用来代替 div 这种无含义的包装器，增加可读性</p>
   <p class="text">例如，一个页面可以用这些语义标签来拆分：</p>
-  <img class="img-fit" src="./assets/html-layout.jpg" />
+  <img class="img-fit" src="/vue3-assets/html-layout.jpg" />
   <p class="img-tip">[菜鸟教程] 带语义的页面布局</p>
 </div>
 
@@ -365,7 +365,7 @@ html {
   <p class="text">这是一种用来为结构化文档添加样式（字体、间距和颜色等）的计算机语言</p>
 </div>
 
-<img class="img-fit" src="./assets/css-structure.jpg" />
+<img class="img-fit" src="/vue3-assets/css-structure.jpg" />
 <p class="img-tip">[菜鸟教程] CSS 单个规则结构</p>
 
 <div class="box-centered">
@@ -660,7 +660,7 @@ html {
   <p class="title">创建 Vue.js 项目</p>
   <p class="text">这一系列指令会安装并执行 create-vue，你会看到一些可选功能提示：</p>
 </div>
-<img class="img-fit" src="./assets/vue-init.png" />
+<img class="img-fit" src="/vue3-assets/vue-init.png" />
 <p class="img-tip">create-vue 创建 Vue 项目</p>
 <div class="box-centered">
   <p class="text">这次，我们将额外添加 Router（单页面应用开发） 的功能。</p>
@@ -677,7 +677,7 @@ html {
     <p class="text">我们挑对实际开发比较重要的文件来讲：</p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/project-structure.png" />
+    <img class="img-right" src="/vue3-assets/project-structure.png" />
     <p class="img-tip">Vue.js 项目文件结构</p>
   </div>
 </div>
@@ -696,7 +696,7 @@ html {
     <p class="text list">4. 项目依赖项</p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/package-json.png" />
+    <img class="img-right" src="/vue3-assets/package-json.png" />
     <p class="img-tip">package.json</p>
   </div>
 </div>
@@ -711,7 +711,7 @@ html {
     <p class="text">vite.config.js 里面包含了开发服务器的配置：</p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/vite-config-js.png" />
+    <img class="img-right" src="/vue3-assets/vite-config-js.png" />
     <p class="img-tip">vite.config.js</p>
   </div>
 </div>
@@ -730,7 +730,7 @@ html {
     <p class="text"><del>跨域问题在这里并不会细说</del></p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/better-vite-config.png" />
+    <img class="img-right" src="/vue3-assets/better-vite-config.png" />
     <p class="img-tip">更牛逼的 vite.config.js</p>
   </div>
 </div>
@@ -748,7 +748,7 @@ html {
     <p class="text">同时，它还使用了 public 文件夹中的 favicon.ico，作为标签页的图标</p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/index-html.png" />
+    <img class="img-right" src="/vue3-assets/index-html.png" />
     <p class="img-tip">index.html</p>
   </div>
 </div>
@@ -770,7 +770,7 @@ html {
     <p class="text">我们的开发主要围绕这一个文件夹展开。</p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/src-structure.png" />
+    <img class="img-right" src="/vue3-assets/src-structure.png" />
     <p class="img-tip">源码文件夹结构</p>
   </div>
 </div>
@@ -781,7 +781,7 @@ html {
   <p class="text">先看 main.js：</p>
 
   ```js
-  import './assets/main.css'
+  import '/vue3-assets/main.css'
   import { createApp } from 'vue'
   import App from './App.vue'
   import router from './router'
@@ -850,7 +850,7 @@ html {
   <p class="title">配置你的 router</p>
   <p class="text">页面不是自动和 URL 绑定的，你需要在 router 中定义好具体怎么绑定：</p>
 </div>
-<img class="img-fit" src="./assets/router-config.png" />
+<img class="img-fit" src="/vue3-assets/router-config.png" />
 <p class="img-tip">router/index.js</p>
 
 --
@@ -868,7 +868,7 @@ html {
     <p class="text list">next: 调用 next() 继续执行跳转，或者调用 next('/path') 跳转到其他路由</p>
   </div>
   <div class="box-centered">
-    <img class="img-right" src="./assets/router-config-more.png" />
+    <img class="img-right" src="/vue3-assets/router-config-more.png" />
     <p class="img-tip">router/index.js</p>
   </div>
 </div>
@@ -888,7 +888,7 @@ html {
 
 <div class="box-centered">
   <p class="title">示例代码</p>
-  <img class="img-fit" src="./assets/vue-sfc.png" />
+  <img class="img-fit" src="/vue3-assets/vue-sfc.png" />
   <p class="img-tip">一个简短的 Vue 单文件组件</p>
   <p class="text"><a href="https://cn.vuejs.org/api/sfc-spec.html#language-blocks">语言块要求</a></p>
 </div>
@@ -1455,7 +1455,7 @@ html {
 
 <nav class="header">
   <a class="header-logo" href="https://www.nju.edu.cn">
-    <img src="./assets/nju-icon.png" />
+    <img src="/vue3-assets/nju-icon.png" />
   </a>
   <p class="header-title">
     南京大学
@@ -1549,7 +1549,7 @@ html {
 }
 </style>
 
-<img class="bg-img" src="./assets/background-image.jpg" />
+<img class="bg-img" src="/vue3-assets/background-image.jpg" />
 <main class="main-container">
   <div class="login-panel">
     <div class="login-content">
