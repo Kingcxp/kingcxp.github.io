@@ -3,7 +3,7 @@ home: true
 layout: Blog
 icon: house
 title: 主页
-heroImage: https://clipartix.com/wp-content/uploads/2018/03/thinking-gif-2018-40.gif
+heroImage: /thinking.gif
 heroText: Kingcq
 heroFullScreen: true
 tagline: 啥都想学，啥也不会
