@@ -12,6 +12,7 @@ export default navbar([
         icon: "pen-to-square",
         prefix: "",
         children: [
+          { text: "C/C++ 语言与程序设计", icon: "microchip", link: "C-C++-语言与程序设计/intro.md" },
           { text: "CPL Remake", icon: "c", link: "CPL-Remake/1" },
           { text: "C 语言学习分享", icon: "c", link: "C-语言学习分享/random" },
           { text: "CPL DotOJ 补完计划", icon: "chart-line", link: "CPL-DotOJ-补完计划/challenges" },
