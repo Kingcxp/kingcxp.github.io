@@ -2,7 +2,7 @@
 title: 变量、数据类型与占位符
 date: 2026-06-30
 icon: database
-order: 3
+order: 4
 category:
   - C/C++ 语言与程序设计
 tag:
@@ -474,6 +474,71 @@ C++ 因为同时继承了 C 语言和面向对象两种传统，命名风格比�
 初学阶段不用纠结哪种风格“最正宗”，关键是**在同一个项目里保持一致**。如果你跟着我这套教程写 C 代码，建议统一使用 snake_case；到了 C++ 面向对象部分，类名用 PascalCase，变量和函数用 snake_case 或 camelCase 都可以，但选定一种就不要混着用。
 :::
 
+### 代码格式化工具
+
+手动保持代码风格一致很累，而且容易遗漏。好在有工具可以自动帮你格式化代码。对于 `C/C++`，最常用的是 **clang-format**。
+
+#### 安装 clang-format
+
+```bash
+# Windows (scoop)
+scoop install llvm  # clang-format 包含在 llvm 中
+
+# macOS (Homebrew)
+brew install clang-format
+
+# Linux (Ubuntu/Debian)
+sudo apt install clang-format
+```
+
+#### 基本用法
+
+```bash
+# 格式化单个文件，直接修改原文件
+clang-format -i hello.c
+
+# 查看格式化结果但不修改（只输出到终端）
+clang-format hello.c
+
+# 使用自定义风格文件
+clang-format -i --style=file hello.c
+```
+
+#### 配置代码风格
+
+`clang-format` 支持多种预定义风格，也可以在项目根目录放一个 `.clang-format` 配置文件来自定义。生成配置文件的命令是：
+
+```bash
+clang-format -style=llvm -dump-config > .clang-format
+```
+
+常用的预定义风格有：
+
+| 风格 | 特点 |
+|------|------|
+| `llvm` | LLVM 项目风格，缩进 2 空格 |
+| `google` | Google 风格，缩进 2 空格 |
+| `mozilla` | Mozilla 风格，缩进 2 空格 |
+| `chromium` | Chromium 风格，缩进 2 空格 |
+| `microsoft` | Microsoft 风格，缩进 4 空格 |
+| `gnu` | GNU 风格，缩进 2 空格 |
+
+```bash
+# 使用 Google 风格格式化
+clang-format -i --style=google hello.c
+```
+
+#### 在 VSCode 中使用
+
+安装了 `C/C++` 插件后，VSCode 已经集成了 `clang-format`。打开设置（`Ctrl+,`），搜索 `format`，将 `Editor: Default Formatter` 设为 `C/C++` 插件，然后启用 `Editor: Format On Save`——这样每次保存文件时都会自动格式化。
+
+你也可以随时按 `Shift+Alt+F`（Windows/Linux）或 `Shift+Option+F`（macOS）手动格式化当前文件。
+
+:::tip 缩进：空格还是 Tab？
+这是一个老生常谈的问题。`C` 语言社区的主流习惯是**缩进使用 4 个空格**（而不是 Tab）。因为不同编辑器对 Tab 的显示宽度可能不同（2 格、4 格、8 格），用空格可以确保代码在任何环境下看起来都一样。`clang-format` 默认也是用空格。
+
+无论你选择哪种，**同一个项目里必须统一**。最好直接用 `clang-format` 自动处理，省去手动对齐的麻烦。
+:::
 
 ## 常见错误与注意事项
 

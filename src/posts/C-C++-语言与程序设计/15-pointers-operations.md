@@ -2,7 +2,7 @@
 title: 指针变量的操作与解引用
 date: 2026-07-06
 icon: arrow-pointer
-order: 15
+order: 16
 category:
   - C/C++ 语言与程序设计
 tag:

@@ -2,7 +2,7 @@
 title: C 语言里的面向对象思想
 date: 2026-07-08
 icon: object-group
-order: 20
+order: 21
 category:
   - C/C++ 语言与程序设计
 tag:

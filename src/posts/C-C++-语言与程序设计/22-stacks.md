@@ -2,7 +2,7 @@
 title: 栈的原理与实现
 date: 2026-07-09
 icon: layer-group
-order: 22
+order: 23
 category:
   - C/C++ 语言与程序设计
 tag:

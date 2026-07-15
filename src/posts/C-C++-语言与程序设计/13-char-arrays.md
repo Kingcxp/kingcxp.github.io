@@ -2,7 +2,7 @@
 title: 字符数组与基础字符串操作
 date: 2026-07-05
 icon: font
-order: 13
+order: 14
 category:
   - C/C++ 语言与程序设计
 tag:

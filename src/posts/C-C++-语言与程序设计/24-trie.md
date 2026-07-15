@@ -2,7 +2,7 @@
 title: 字典树 Trie
 date: 2026-07-10
 icon: folder-tree
-order: 24
+order: 25
 category:
   - C/C++ 语言与程序设计
 tag:

@@ -2,7 +2,7 @@
 title: 算术、关系与逻辑运算符
 date: 2026-07-01
 icon: calculator
-order: 5
+order: 6
 category:
   - C/C++ 语言与程序设计
 tag:

@@ -2,7 +2,7 @@
 title: 动态内存分配
 date: 2026-07-07
 icon: memory
-order: 17
+order: 18
 category:
   - C/C++ 语言与程序设计
 tag:

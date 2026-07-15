@@ -2,7 +2,7 @@
 title: 虚函数与多态
 date: 2026-07-16
 icon: shapes
-order: 36
+order: 37
 category:
   - C/C++ 语言与程序设计
 tag:

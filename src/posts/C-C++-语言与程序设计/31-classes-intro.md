@@ -2,7 +2,7 @@
 title: 从结构体到类
 date: 2026-07-14
 icon: cube
-order: 31
+order: 32
 category:
   - C/C++ 语言与程序设计
 tag:

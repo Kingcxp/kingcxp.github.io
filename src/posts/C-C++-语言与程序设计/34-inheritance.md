@@ -2,7 +2,7 @@
 title: 继承与派生
 date: 2026-07-15
 icon: sitemap
-order: 34
+order: 35
 category:
   - C/C++ 语言与程序设计
 tag:

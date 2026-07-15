@@ -2,7 +2,7 @@
 title: 指针的概念与内存地址
 date: 2026-07-05
 icon: location-dot
-order: 14
+order: 15
 category:
   - C/C++ 语言与程序设计
 tag:

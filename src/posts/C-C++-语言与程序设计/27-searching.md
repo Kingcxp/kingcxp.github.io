@@ -2,7 +2,7 @@
 title: 顺序查找与二分查找
 date: 2026-07-12
 icon: magnifying-glass
-order: 27
+order: 28
 category:
   - C/C++ 语言与程序设计
 tag:

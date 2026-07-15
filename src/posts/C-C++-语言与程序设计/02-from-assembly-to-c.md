@@ -2,7 +2,7 @@
 title: 来自汇编：高级语言
 date: 2026-06-29
 icon: memory
-order: 2
+order: 3
 category:
   - C/C++ 语言与程序设计
 tag:

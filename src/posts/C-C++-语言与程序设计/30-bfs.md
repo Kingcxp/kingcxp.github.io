@@ -2,7 +2,7 @@
 title: 广度优先搜索 BFS
 date: 2026-07-13
 icon: layer-group
-order: 30
+order: 31
 category:
   - C/C++ 语言与程序设计
 tag:

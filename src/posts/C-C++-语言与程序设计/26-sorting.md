@@ -2,7 +2,7 @@
 title: 基础排序算法
 date: 2026-07-11
 icon: arrow-down-wide-short
-order: 26
+order: 27
 category:
   - C/C++ 语言与程序设计
 tag:

@@ -2,7 +2,7 @@
 title: 递归思想与函数调用栈
 date: 2026-07-12
 icon: rotate-right
-order: 28
+order: 29
 category:
   - C/C++ 语言与程序设计
 tag:

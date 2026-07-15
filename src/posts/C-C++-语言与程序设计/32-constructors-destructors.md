@@ -2,7 +2,7 @@
 title: 构造函数与析构函数
 date: 2026-07-14
 icon: hammer
-order: 32
+order: 33
 category:
   - C/C++ 语言与程序设计
 tag:
