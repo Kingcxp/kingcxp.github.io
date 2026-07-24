@@ -13,7 +13,7 @@ tag:
 author: Kingcq
 ---
 
-标准算法不直接依赖某一种容器，而是通过迭代器描述元素范围。这让同一算法可以处理数组、`vector`、`list` 和其他满足要求的序列。
+<span style="color: #409EFF;">标准算法不直接依赖某一种容器，而是通过迭代器描述元素范围。</span>这让同一算法可以处理数组、`vector`、`list` 和其他满足要求的序列。
 
 ## 半开区间 `[first, last)`
 
@@ -25,7 +25,7 @@ std::vector<int> values{4, 1, 3, 2};
 std::sort(values.begin(), values.end());
 ```
 
-`begin()` 指向第一个元素，`end()` 指向最后一个元素之后的位置，不能解引用。
+<span style="color: #F56C6C;">`begin()` 指向第一个元素，`end()` 指向最后一个元素之后的位置，不能解引用。</span>
 
 半开区间的优点：
 
@@ -147,7 +147,7 @@ std::sort(users.begin(), users.end(),
           });
 ```
 
-比较器必须形成严格弱序。不要写 `return a.score >= b.score;`，因为对象与自身比较时会返回真，破坏规则。
+比较器必须形成严格弱序。<span style="color: #F56C6C;">不要写 `return a.score >= b.score;`，因为对象与自身比较时会返回真，破坏规则。</span>
 
 ## 二分算法
 
@@ -163,7 +163,7 @@ std::upper_bound(first, last, value);
 - `upper_bound`：第一个大于目标的位置；
 - 两者之差给出重复目标数量。
 
-前提是范围按兼容的比较规则排序。
+<span style="color: #E6A23C;">前提是范围按兼容的比较规则排序。</span>
 
 ## 迭代器失效
 

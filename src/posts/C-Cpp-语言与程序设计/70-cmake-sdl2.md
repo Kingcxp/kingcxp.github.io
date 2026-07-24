@@ -19,11 +19,11 @@ author: Kingcq
 
 上一篇的 `Makefile` 虽然能自动构建项目，但有几个明显的不足：
 
-- **跨平台困难**：Windows 用 `MinGW` 或 `MSVC`，Linux 用 `GCC`，macOS 用 `Clang`，`Makefile` 要为每个平台写不同版本。
-- **依赖管理原始**：如果项目依赖了第三方库（如 `SDL2`、`OpenGL`），找库、配置路径全靠手动。
-- **语法简陋**：条件判断、循环、函数等高级功能写起来很别扭。
+- <span style="color: #409EFF;">跨平台困难</span>：Windows 用 `MinGW` 或 `MSVC`，Linux 用 `GCC`，macOS 用 `Clang`，`Makefile` 要为每个平台写不同版本。
+- <span style="color: #409EFF;">依赖管理原始</span>：如果项目依赖了第三方库（如 `SDL2`、`OpenGL`），找库、配置路径全靠手动。
+- <span style="color: #409EFF;">语法简陋</span>：条件判断、循环、函数等高级功能写起来很别扭。
 
-于是社区发展出了更高级的构建工具。最流行的是 **CMake**（事实标准），新兴的还有 **XMake**（更简洁的语法）。它们不直接编译代码，而是先生成本地构建文件（如 `Makefile`、`Visual Studio 解决方案`），再调用底层的编译器。
+于是社区发展出了更高级的构建工具。最流行的是 <span style="color: #409EFF;">CMake</span>（事实标准），新兴的还有 <span style="color: #409EFF;">XMake</span>（更简洁的语法）。它们不直接编译代码，而是先生成本地构建文件（如 `Makefile`、`Visual Studio 解决方案`），再调用底层的编译器。
 
 ---
 
@@ -39,26 +39,26 @@ author: Kingcq
 
 ## 静态链接库与动态链接库
 
-在动手写代码之前，先弄清楚两种库的区别，因为后面你会频繁遇到。
+<span style="color: #E6A23C;">在动手写代码之前，先弄清楚两种库的区别，因为后面你会频繁遇到。</span>
 
 ### 静态链接库
 
-- **Windows**：`.lib`
-- **Linux**：`.a`
-- **macOS**：`.a`
+- <span style="color: #409EFF;">Windows</span>：`.lib`
+- <span style="color: #409EFF;">Linux</span>：`.a`
+- <span style="color: #409EFF;">macOS</span>：`.a`
 
-静态库在**链接阶段**被完整地复制到可执行文件中。生成的可执行文件**不依赖外部的库文件**，可以直接运行。
+静态库在<span style="color: #409EFF;">链接阶段</span>被完整地复制到可执行文件中。生成的可执行文件<span style="color: #409EFF;">不依赖外部的库文件</span>，可以直接运行。
 
 优点：部署简单，只要一个可执行文件就能跑。
 缺点：多个程序使用同一个静态库时，每个程序都有一份副本，浪费磁盘和内存；库升级时需要重新链接。
 
 ### 动态链接库
 
-- **Windows**：`.dll`（搭配 `.lib` 导入库）
-- **Linux**：`.so`
-- **macOS**：`.dylib`
+- <span style="color: #409EFF;">Windows</span>：`.dll`（搭配 `.lib` 导入库）
+- <span style="color: #409EFF;">Linux</span>：`.so`
+- <span style="color: #409EFF;">macOS</span>：`.dylib`
 
-动态库在**运行阶段**才被加载到内存中。可执行文件只记录"我需要这个库"，运行时由系统加载器去找并加载。
+动态库在<span style="color: #409EFF;">运行阶段</span>才被加载到内存中。可执行文件只记录"我需要这个库"，运行时由系统加载器去找并加载。
 
 优点：多个程序共享一份库文件，节省内存；库升级时只要替换 `.dll`/`.so` 文件即可，程序无需重新链接。
 缺点：部署时需要带上所有依赖的 `.dll`/`.so`，缺少任何一个程序都无法启动。
@@ -219,7 +219,7 @@ target_link_libraries(bouncing_ball PRIVATE SDL2::SDL2)
 - `cmake_minimum_required(VERSION 3.10)`：声明用的 CMake 版本。版本太旧可能不支持某些语法。
 - `project(BouncingBall C)`：项目名和语言。CMake 会根据语言选择合适的编译器。
 - `set(CMAKE_C_STANDARD 11)`：要求使用 `C11` 标准。
-- `find_package(SDL2 REQUIRED)`：**查找 SDL2 库**。`REQUIRED` 表示如果找不到就报错。CMake 会在系统的标准路径（以及你额外指定的路径）下搜索 `SDL2` 的配置脚本（`SDL2Config.cmake` 或 `sdl2-config.cmake`）。
+- `find_package(SDL2 REQUIRED)`：<span style="color: #409EFF;">查找 SDL2 库</span>。`REQUIRED` 表示如果找不到就报错。CMake 会在系统的标准路径（以及你额外指定的路径）下搜索 `SDL2` 的配置脚本（`SDL2Config.cmake` 或 `sdl2-config.cmake`）。
 - `add_executable(bouncing_ball game.c)`：声明要生成的可执行文件及其源文件。
 - `target_link_libraries(bouncing_ball PRIVATE SDL2::SDL2)`：把 SDL2 库链接到目标。`PRIVATE` 表示这个依赖只对 `bouncing_ball` 自己可见。
 
@@ -348,7 +348,7 @@ set_config("cflags", "-Wall -g")
 
 ### 工具链是什么
 
-**工具链**（Toolchain）是一组工具的集合，包括编译器、链接器、汇编器、调试器等。不同的平台有不同的工具链：
+<span style="color: #409EFF;">工具链</span>（Toolchain）是一组工具的集合，包括编译器、链接器、汇编器、调试器等。不同的平台有不同的工具链：
 
 | 平台 | 常用工具链 |
 |------|-----------|
@@ -374,9 +374,9 @@ cmake .. -G "Ninja"
 
 ### 交叉编译
 
-**交叉编译**（Cross Compilation）是在一个平台上编译出另一个平台可运行的程序。比如在 Windows 上编译 Linux 可执行文件，或者在 x86 电脑上编译 ARM 开发板的程序。
+<span style="color: #409EFF;">交叉编译</span>（Cross Compilation）是在一个平台上编译出另一个平台可运行的程序。比如在 Windows 上编译 Linux 可执行文件，或者在 x86 电脑上编译 ARM 开发板的程序。
 
-CMake 通过**工具链文件**（toolchain file）来支持交叉编译。创建一个 `arm-toolchain.cmake`：
+CMake 通过<span style="color: #409EFF;">工具链文件</span>（toolchain file）来支持交叉编译。创建一个 `arm-toolchain.cmake`：
 
 ```cmake
 # 指定目标系统
@@ -444,16 +444,16 @@ add_requires("sdl2", {configs = {shared = false}})  -- 静态链接
 
 当你需要引入一个新的第三方库时，如何知道 `find_package` 怎么写？
 
-1. **查看库的官方文档**：大多数现代库都会提供 CMake 集成指南。
-2. **查看库的安装目录**：安装后，在库的 `lib/cmake` 目录下找 `.cmake` 文件。
-3. **搜索 GitHub**：搜索 `库名 cmake find_package`。
-4. **使用 CMake 的 `find_package` 手册**：
+1. <span style="color: #409EFF;">查看库的官方文档</span>：大多数现代库都会提供 CMake 集成指南。
+2. <span style="color: #409EFF;">查看库的安装目录</span>：安装后，在库的 `lib/cmake` 目录下找 `.cmake` 文件。
+3. <span style="color: #409EFF;">搜索 GitHub</span>：搜索 `库名 cmake find_package`。
+4. <span style="color: #409EFF;">使用 CMake 的 `find_package` 手册</span>：
 
 ```bash
 cmake --help-module-list | grep SDL
 ```
 
-5. **对于没有提供 CMake 配置的旧库**，可以用 `FindXXX.cmake` 模块或手动指定路径：
+5. <span style="color: #409EFF;">对于没有提供 CMake 配置的旧库</span>，可以用 `FindXXX.cmake` 模块或手动指定路径：
 
 ```cmake
 # 手动指定库路径（不推荐，除非万不得已）
@@ -466,11 +466,11 @@ find_package(SDL2 REQUIRED)
 
 ## 常见错误与注意事项
 
-1. **`find_package` 找不到库**：库没安装，或安装在非标准路径。用 `CMAKE_PREFIX_PATH` 指定搜索路径。
-2. **链接时提示 `undefined reference`**：忘记链接某个库，或者链接顺序不对。在 CMake 中确保所有 `target_link_libraries` 写全了。
-3. **运行时提示找不到 `.dll`/`.so`**：动态库不在系统的库搜索路径中。Windows 上可以把 `.dll` 和可执行文件放在同一目录，Linux 上可以设置 `LD_LIBRARY_PATH`。
-4. **CMake 版本太低**：某些语法需要新版本支持。升级 CMake 或在配置中降低要求。
-5. **XMake 下载依赖失败**：网络问题导致无法下载。检查网络，或配置镜像源。
+1. <span style="color: #F56C6C;">`find_package` 找不到库</span>：库没安装，或安装在非标准路径。用 `CMAKE_PREFIX_PATH` 指定搜索路径。
+2. <span style="color: #F56C6C;">链接时提示 `undefined reference`</span>：忘记链接某个库，或者链接顺序不对。在 CMake 中确保所有 `target_link_libraries` 写全了。
+3. <span style="color: #F56C6C;">运行时提示找不到 `.dll`/`.so`</span>：动态库不在系统的库搜索路径中。Windows 上可以把 `.dll` 和可执行文件放在同一目录，Linux 上可以设置 `LD_LIBRARY_PATH`。
+4. <span style="color: #F56C6C;">CMake 版本太低</span>：某些语法需要新版本支持。升级 CMake 或在配置中降低要求。
+5. <span style="color: #F56C6C;">XMake 下载依赖失败</span>：网络问题导致无法下载。检查网络，或配置镜像源。
 
 ---
 

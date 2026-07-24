@@ -193,9 +193,9 @@ int hash_table_remove(HashTable *table, const char *key)
 load_factor = size / bucket_count
 ```
 
-链地址法允许负载因子大于 1，但链越长，查找越慢。常见做法是在超过某个阈值时增加桶数量并**重新散列**所有节点。
+链地址法允许负载因子大于 1，但链越长，查找越慢。常见做法是在超过某个阈值时增加桶数量并<span style="color: #409EFF;">重新散列</span>所有节点。
 
-不能只 `realloc` 桶数组，因为桶下标取决于 `% bucket_count`。桶数量变化后，每个键都要重新计算位置。
+<span style="color: #E6A23C;">不能只 `realloc` 桶数组，因为桶下标取决于 `% bucket_count`。</span>桶数量变化后，每个键都要重新计算位置。
 
 ## 销毁
 
@@ -227,7 +227,7 @@ void hash_table_destroy(HashTable *table)
 | 大量冲突 | 可能退化为 `O(n)` |
 | 恶意构造输入 | 若无防护可能持续退化 |
 
-因此，哈希函数、负载因子、扩容策略和输入模型都属于性能保证的一部分。
+<span style="color: #409EFF;">因此，哈希函数、负载因子、扩容策略和输入模型都属于性能保证的一部分。</span>
 
 ## 哈希表与树的选择
 
@@ -245,4 +245,4 @@ void hash_table_destroy(HashTable *table)
 
 “哪个更快”没有脱离操作需求和数据分布的统一答案。
 
-树、堆和哈希表都对关系施加了特定约束。下一篇进入更一般的图结构，学习邻接矩阵、邻接表和边数组怎样表达任意连接。
+<span style="color: #409EFF;">树、堆和哈希表都对关系施加了特定约束。</span>下一篇进入更一般的图结构，学习邻接矩阵、邻接表和边数组怎样表达任意连接。

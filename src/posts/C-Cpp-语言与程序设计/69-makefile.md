@@ -41,16 +41,16 @@ gcc main.o utils.o network.o -o program
 
 ## Makefile 基本语法
 
-一个 `Makefile` 由若干条**规则**组成。每条规则的格式是：
+一个 `Makefile` 由若干条<span style="color: #409EFF;">规则</span>组成。每条规则的格式是：
 
 ```makefile
 目标: 依赖项
 <Tab>命令
 ```
 
-- **目标**：要生成的文件名（如 `hello.o`、`hello`）
-- **依赖项**：生成目标所需的文件
-- **命令**：如何从依赖项生成目标（**注意：命令前面必须是 Tab 键，不是空格！**）
+- <span style="color: #409EFF;">目标</span>：要生成的文件名（如 `hello.o`、`hello`）
+- <span style="color: #409EFF;">依赖项</span>：生成目标所需的文件
+- <span style="color: #409EFF;">命令</span>：如何从依赖项生成目标（<span style="color: #E6A23C;">注意：命令前面必须是 Tab 键，不是空格！</span>）
 
 ### 第一个 Makefile
 
@@ -71,7 +71,7 @@ clean:
 	rm -f *.o hello
 ```
 
-把这个文件保存为 `Makefile`（注意没有后缀），然后在终端执行：
+<span style="color: #E6A23C;">把这个文件保存为 `Makefile`（注意没有后缀），然后在终端执行：</span>
 
 ```bash
 make        # 编译整个项目
@@ -86,7 +86,7 @@ make clean  # 清理中间文件和可执行文件
 3. 如果某个 `.o` 文件不存在，或者对应的 `.c` 文件比 `.o` 文件更新，就重新编译
 4. 所有 `.o` 文件就绪后，链接生成 `hello`
 
-这就是 `make` 的增量编译：**只重新编译变动的文件**，没改过的文件直接用之前的编译结果，大大节省时间。
+这就是 `make` 的增量编译：<span style="color: #409EFF;">只重新编译变动的文件</span>，没改过的文件直接用之前的编译结果，大大节省时间。
 
 ### 为什么用 Tab 而不是空格
 
@@ -138,7 +138,7 @@ clean:
 
 ## 模式规则与自动变量
 
-上面的 `Makefile` 里 `main.o` 和 `utils.o` 的规则几乎一样，可以用**模式规则**合并：
+上面的 `Makefile` 里 `main.o` 和 `utils.o` 的规则几乎一样，可以用<span style="color: #E6A23C;">模式规则</span>合并：
 
 ```makefile
 CC = gcc
@@ -158,7 +158,7 @@ clean:
 	rm -f $(OBJS) $(TARGET)
 ```
 
-这里用到了一些**自动变量**：
+这里用到了一些<span style="color: #E6A23C;">自动变量</span>：
 
 - `$@`：表示当前规则的目标（如 `main.o`）
 - `$<`：表示第一个依赖项（如 `main.c`）
@@ -174,7 +174,7 @@ clean:
 
 ## 伪目标
 
-前面我们写了 `clean`，它不是一个真正的文件名，而是一个操作。这种目标叫**伪目标**，需要用 `.PHONY` 声明，避免目录下恰好有一个叫 `clean` 的文件导致 `make` 以为不需要执行：
+前面我们写了 `clean`，它不是一个真正的文件名，而是一个操作。这种目标叫<span style="color: #409EFF;">伪目标</span>，需要用 `.PHONY` 声明，避免目录下恰好有一个叫 `clean` 的文件导致 `make` 以为不需要执行：
 
 ```makefile
 .PHONY: clean
@@ -255,13 +255,13 @@ clean:
 
 ## 常见错误与注意事项
 
-1. **命令前是空格不是 Tab**：`make` 会报 `*** missing separator. Stop.`。检查你的编辑器在 Makefile 中是否把 Tab 转成了空格。
+1. <span style="color: #F56C6C;">命令前是空格不是 Tab</span>：`make` 会报 `*** missing separator. Stop.`。检查你的编辑器在 Makefile 中是否把 Tab 转成了空格。
 
-2. **忘记声明 `.PHONY`**：如果恰好有文件叫 `clean`，`make clean` 就会说"clean 已是最新"，不执行任何操作。
+2. <span style="color: #F56C6C;">忘记声明 `.PHONY`</span>：如果恰好有文件叫 `clean`，`make clean` 就会说"clean 已是最新"，不执行任何操作。
 
-3. **依赖项漏写头文件**：如果修改了 `utils.h`，但 `Makefile` 中没有把 `utils.h` 列为依赖，`make` 不会重新编译受影响的 `.c` 文件，导致链接了过时的 `.o` 文件。调试时会发现修改头文件后程序行为没变。
+3. <span style="color: #F56C6C;">依赖项漏写头文件</span>：如果修改了 `utils.h`，但 `Makefile` 中没有把 `utils.h` 列为依赖，`make` 不会重新编译受影响的 `.c` 文件，导致链接了过时的 `.o` 文件。调试时会发现修改头文件后程序行为没变。
 
-4. **变量赋值时等号两边可以加空格**：`CC = gcc` 和 `CC=gcc` 都可以，习惯上都加空格提高可读性。
+4. <span style="color: #F56C6C;">变量赋值时等号两边可以加空格</span>：`CC = gcc` 和 `CC=gcc` 都可以，习惯上都加空格提高可读性。
 
 ---
 

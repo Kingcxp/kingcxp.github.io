@@ -17,7 +17,7 @@ author: Kingcq
 
 在开始写代码之前，我们需要先搭建好开发环境。这套教程中，我们会同时用到 `C` 和 `C++`，因此编译器需要同时支持两者。好消息是，主流的 `GCC`、`Clang` 和 `MSVC` 都同时支持 `C` 和 `C++`，安装一个就够了。
 
-下面我会分平台介绍最推荐的安装方式。
+<span style="color: #67C23A;">下面我会分平台介绍最推荐的安装方式。</span>
 
 ---
 
@@ -35,10 +35,10 @@ author: Kingcq
 
 `winget` 安装包时需要管理员权限。如果你还不熟悉如何打开"管理员 PowerShell"，请按以下步骤操作：
 
-1. 点击任务栏上的**开始**按钮（或按键盘上的 `Win` 键）
+1. 点击任务栏上的<span style="color: #409EFF;">开始</span>按钮（或按键盘上的 `Win` 键）
 2. 输入 `powershell`
-3. 在搜索结果中，**右键**点击 `Windows PowerShell`，选择**以管理员身份运行**
-4. 如果弹出用户账户控制（UAC）窗口，点击**是**
+3. 在搜索结果中，<span style="color: #409EFF;">右键</span>点击 `Windows PowerShell`，选择<span style="color: #409EFF;">以管理员身份运行</span>
+4. 如果弹出用户账户控制（UAC）窗口，点击<span style="color: #409EFF;">是</span>
 5. 此时你会看到一个蓝底的窗口，光标前面有 `PS C:\Windows\system32>` 提示符
 
 完成后，在蓝底窗口中输入以下命令。
@@ -69,11 +69,11 @@ pacman -S mingw-w64-ucrt-x86_64-gcc
 
 #### 添加环境变量
 
-1. 在搜索栏输入"环境变量"，打开**编辑系统环境变量**
-2. 点击**环境变量**按钮
+1. 在搜索栏输入"环境变量"，打开<span style="color: #409EFF;">编辑系统环境变量</span>
+2. 点击<span style="color: #409EFF;">环境变量</span>按钮
 3. 在"系统变量"列表中找到 `Path`，双击
-4. 点击**新建**，输入 `C:\msys64\ucrt64\bin`
-5. 一路点**确定**
+4. 点击<span style="color: #409EFF;">新建</span>，输入 `C:\msys64\ucrt64\bin`
+5. 一路点<span style="color: #409EFF;">确定</span>
 
 验证安装：重新打开一个普通 PowerShell 窗口（不是管理员），输入：
 
@@ -92,7 +92,7 @@ winget search "visual studio build tools"
 winget install -e --id Microsoft.VisualStudio.2022.BuildTools
 ```
 
-安装器启动后，在"工作负载"页面勾选**使用 C++ 的桌面开发**，然后点击安装。安装完成后，从开始菜单打开 `Developer Command Prompt for VS 2022`，输入 `cl` 验证编译器是否可用。
+安装器启动后，在"工作负载"页面勾选<span style="color: #409EFF;">使用 C++ 的桌面开发</span>，然后点击安装。安装完成后，从开始菜单打开 `Developer Command Prompt for VS 2022`，输入 `cl` 验证编译器是否可用。
 
 ### 使用 scoop 安装
 
@@ -149,8 +149,8 @@ $env:SCOOP='D:\scoop'
 
 #### 打开终端
 
-- **macOS**：按 `Command + 空格`，输入 `terminal`，回车
-- **Linux**（Ubuntu/Debian）：按 `Ctrl + Alt + T`
+- <span style="color: #409EFF;">macOS</span>：按 `Command + 空格`，输入 `terminal`，回车
+- <span style="color: #409EFF;">Linux</span>（Ubuntu/Debian）：按 `Ctrl + Alt + T`
 
 #### 安装 Homebrew
 
@@ -218,19 +218,17 @@ brew install --cask visual-studio-code
 
 | 插件名称 | 作用 |
 |----------|------|
-| **C/C++**（Microsoft 出品） | 语法高亮、代码补全、调试支持 |
-| **C/C++ Extension Pack** | 上面那个插件的全家桶，额外包含 CMake 等工具支持 |
-| **CMake Tools** | 在进入多文件项目后，帮助配置和构建 CMake 项目（前期可不装） |
-| **GitLens** | Git 历史记录可视化（非必须，但很有用） |
-| **Chinese (Simplified) Language Pack** | 中文界面（如果你需要） |
+| <span style="color: #409EFF;">C/C++</span>（Microsoft 出品） | 语法高亮、代码补全、调试支持 |
+| <span style="color: #409EFF;">C/C++ Extension Pack</span> | 上面那个插件的全家桶，额外包含 CMake 等工具支持 |
+| <span style="color: #409EFF;">CMake Tools</span> | 在进入多文件项目后，帮助配置和构建 CMake 项目（前期可不装） |
+| <span style="color: #409EFF;">GitLens</span> | Git 历史记录可视化（非必须，但很有用） |
+| <span style="color: #409EFF;">Chinese (Simplified) Language Pack</span> | 中文界面（如果你需要） |
 
 安装完 `C/C++` 插件后，打开一个 `.c` 或 `.cpp` 文件，编辑器会自动激活语法高亮和智能提示。
 
 ### Zed
 
 `Zed` 是一款强调高性能与协作体验的编辑器，目前提供 `Windows`、`macOS` 和 `Linux` 版本。它的安装方式和语言扩展可能随版本变化，实际操作时以安装页与编辑器内提示为准。
-
-`Zed` 是一款新兴的编辑器，生态不如 `VSCode` 完善（甚至可以说，比较糟糕，很多方便的功能，比如说阅读 pdf 文件，`Zed` 编辑器都没有提供原生支持，也很难找到插件支持），但它的界面简洁、响应速度快，并且原生支持 agent 来用 AI 辅助编写项目，适合喜欢轻量级编辑器的用户。
 
 #### 安装 Zed
 
@@ -252,8 +250,8 @@ curl -f https://zed.dev/install.sh | sh
 `Zed` 内置了 `C/C++` 的语言支持（基于 `Tree-sitter`），安装后打开 `.c` 或 `.cpp` 文件即可获得语法高亮、代码补全和跳转定义等功能，无需额外安装插件。对于 `Zed` 用户来说，开箱即用。
 
 :::tip 选择哪个？
-- **VSCode**：生态最完善，插件丰富，适合所有平台的初学者。
-- **Zed**：界面简洁、响应较快，同样支持主流桌面系统；如果某个扩展或调试流程不顺手，可以先回到资料更多的 VSCode。
+- <span style="color: #409EFF;">VSCode</span>：生态最完善，插件丰富，适合所有平台的初学者。
+- <span style="color: #409EFF;">Zed</span>：界面简洁、响应较快，同样支持主流桌面系统；如果某个扩展或调试流程不顺手，可以先回到资料更多的 VSCode。
 :::
 
 ---
@@ -349,11 +347,11 @@ gcc hello.c -O2 -o hello
 
 初学者最常遇到的几个编译错误：
 
-1. **`'gcc' 不是内部或外部命令`**（Windows）/ **`command not found: gcc`**（macOS/Linux）：编译器没有正确安装或没有添加到 `PATH`。重新检查安装步骤，确认环境变量配置正确。
+1. <span style="color: #F56C6C;">`'gcc' 不是内部或外部命令`</span>（Windows）/ <span style="color: #F56C6C;">`command not found: gcc`</span>（macOS/Linux）：编译器没有正确安装或没有添加到 `PATH`。重新检查安装步骤，确认环境变量配置正确。
 
-2. **`fatal error: stdio.h: No such file or directory`**：标准库头文件找不到。通常是编译器安装不完整，尝试重新安装。
+2. <span style="color: #F56C6C;">`fatal error: stdio.h: No such file or directory`</span>：标准库头文件找不到。通常是编译器安装不完整，尝试重新安装。
 
-3. **`undefined reference to 'main'`**：程序没有 `main` 函数，或者 `main` 拼写错误（比如写成了 `mian`）。检查代码。
+3. <span style="color: #F56C6C;">`undefined reference to 'main'`</span>：程序没有 `main` 函数，或者 `main` 拼写错误（比如写成了 `mian`）。检查代码。
 
 ---
 

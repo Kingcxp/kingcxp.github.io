@@ -41,7 +41,7 @@ private:
 };
 ```
 
-我们平时写 `value` 时，编译器实际上把它理解为 `this->value`。也就是说，`this` 永远指向**调用这个函数的那个对象**。
+我们平时写 `value` 时，编译器实际上把它理解为 `this->value`。也就是说，`this` 永远指向<span style="color: #409EFF;">调用这个函数的那个对象</span>。
 
 :::tip 注意
 `this` 指针只能在类的非静态成员函数里使用，静态成员函数没有 `this`。
@@ -202,11 +202,11 @@ int main() {
 
 ## 常见错误与注意事项
 
-1. **在静态成员函数里使用 `this`**
+1. <span style="color: #F56C6C;">在静态成员函数里使用 `this`</span>
 
    静态函数不属于某个对象，没有 `this` 指针。
 
-2. **试图修改 `this` 本身**
+2. <span style="color: #F56C6C;">试图修改 `this` 本身</span>
 
    `this` 是一个常量指针，你不能让它指向另一个对象：
 
@@ -214,9 +214,9 @@ int main() {
    this = nullptr;  // 编译错误
    ```
 
-3. **返回局部对象的引用或指针**
+3. <span style="color: #F56C6C;">返回局部对象的引用或指针</span>
 
-   链式调用返回 `*this` 的前提是对象在调用结束后还存在。如果你在函数里创建了一个局部对象并返回它的引用，就会出问题：
+<span style="color: #E6A23C;">   链式调用返回 `*this` 的前提是对象在调用结束后还存在。</span>如果你在函数里创建了一个局部对象并返回它的引用，就会出问题：
 
    ```cpp
    Person& create() {
@@ -225,7 +225,7 @@ int main() {
    }
    ```
 
-4. **误以为 `this` 是对象本身**
+4. <span style="color: #F56C6C;">误以为 `this` 是对象本身</span>
 
    `this` 是指针，`*this` 才是对象。需要引用时返回 `*this`，需要地址时返回 `this`。
 
@@ -262,7 +262,7 @@ counter.add(1).add(2);
 
 ## 自赋值检查只是资源类的一部分
 
-在复制赋值中 `this == &other` 可识别自赋值，但更推荐使用能自然处理异常和自赋值的值成员或 copy-and-swap，而不是到处手写裸资源逻辑。
+<span style="color: #67C23A;">在复制赋值中 `this == &other` 可识别自赋值，但更推荐使用能自然处理异常和自赋值的值成员或 copy-and-swap，而不是到处手写裸资源逻辑。</span>
 
 ## 小结
 

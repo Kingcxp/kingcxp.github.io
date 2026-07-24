@@ -13,7 +13,7 @@ tag:
 author: Kingcq
 ---
 
-C 的函数指针只能表示普通函数地址。C++ 中，普通函数、函数对象、lambda 和成员函数包装都可以成为“可调用对象”，让行为更容易作为参数传递。
+<span style="color: #409EFF;">C 的函数指针只能表示普通函数地址。</span>C++ 中，普通函数、函数对象、lambda 和成员函数包装都可以成为“可调用对象”，让行为更容易作为参数传递。
 
 ## 最小 lambda
 
@@ -75,7 +75,7 @@ std::for_each(values.begin(), values.end(),
               [&sum](int value) { sum += value; });
 ```
 
-lambda 只是借用 `sum`。如果 lambda 活得比 `sum` 久，引用会悬空。
+lambda 只是借用 `sum`。<span style="color: #F56C6C;">如果 lambda 活得比 `sum` 久，引用会悬空。</span>
 
 危险示例：
 
@@ -143,7 +143,7 @@ GreaterThan predicate{10};
 bool result = predicate(20);
 ```
 
-lambda 本质上会生成一个未命名的函数对象类型。命名函数对象适合逻辑需要复用、测试或拥有较多状态的场景。
+<span style="color: #409EFF;">lambda 本质上会生成一个未命名的函数对象类型。</span>命名函数对象适合逻辑需要复用、测试或拥有较多状态的场景。
 
 ## `std::function`
 
@@ -190,6 +190,6 @@ std::invoke(&Widget::update, widget, 10);
 - 捕获对象需要活多久；
 - 多线程调用是否安全。
 
-“能调用”只是类型层面的第一步，生命周期和执行时机才是实际工程中的难点。
+<span style="color: #E6A23C;">“能调用”只是类型层面的第一步，生命周期和执行时机才是实际工程中的难点。</span>
 
 回调可能失败，文件和解析也可能失败。下一篇系统比较异常、`std::optional`、`std::variant` 和状态返回，选择与错误性质相匹配的表达方式。

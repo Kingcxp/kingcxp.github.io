@@ -79,12 +79,12 @@ assert(scanf("%d", &value) == 1); // 发布构建中可能根本不执行 scanf
 
 每个函数至少考虑：
 
-1. **正常值**：最常见输入；
-2. **边界值**：最小、最大、空、单元素；
-3. **边界两侧**：刚小于、刚大于；
-4. **无效输入**：不满足前置条件；
-5. **重复和特殊结构**：全相同、已排序、逆序；
-6. **规模变化**：小数据和较大数据。
+1. <span style="color: #409EFF;">正常值</span>：最常见输入；
+2. <span style="color: #E6A23C;">边界值</span>：最小、最大、空、单元素；
+3. <span style="color: #E6A23C;">边界两侧</span>：刚小于、刚大于；
+4. <span style="color: #F56C6C;">无效输入</span>：不满足前置条件；
+5. <span style="color: #409EFF;">重复和特殊结构</span>：全相同、已排序、逆序；
+6. <span style="color: #409EFF;">规模变化</span>：小数据和较大数据。
 
 例如二分查找应测试：
 
@@ -181,9 +181,9 @@ Sanitizer 只能发现实际执行到的路径，因此仍需要好的测试输�
 
 ## MemorySanitizer 与 Valgrind
 
-MemorySanitizer 主要检查未初始化读取，但通常要求 Clang 及配套运行库，并且最好让依赖也经过插桩。Valgrind 在部分 Unix 平台上可用于内存检查，但速度较慢，平台支持也不同。
+<span style="color: #67C23A;">MemorySanitizer 主要检查未初始化读取，但通常要求 Clang 及配套运行库，并且最好让依赖也经过插桩。</span>Valgrind 在部分 Unix 平台上可用于内存检查，但速度较慢，平台支持也不同。
 
-不要把“工具没有报告”理解成“程序已经证明正确”。
+<span style="color: #F56C6C;">不要把“工具没有报告”理解成“程序已经证明正确”。</span>
 
 ## 静态分析
 

@@ -137,7 +137,7 @@ int main(void) {
 
 ## free：归还内存
 
-`free` 把 `malloc` 申请的内存还给系统。没有 `free` 的内存会一直占用，直到程序结束。长期运行的程序如果不断申请却不释放，就会造成**内存泄漏**。
+`free` 把 `malloc` 申请的内存还给系统。没有 `free` 的内存会一直占用，直到程序结束。长期运行的程序如果不断申请却不释放，就会造成<span style="color: #F56C6C;">内存泄漏</span>。
 
 ```c
 int *p = malloc(sizeof(int));
@@ -227,10 +227,10 @@ int main(void) {
 
 ## 常见错误
 
-1. **malloc 后忘记 free**。导致内存泄漏。
-2. **free 后继续使用指针**。造成悬空指针，行为未定义。
-3. **free 非 malloc 申请的内存**。比如 `free(&a);` 会崩溃。
-4. **多次 free 同一块内存**。也会崩溃。
+1. <span style="color: #F56C6C;">malloc 后忘记 free</span>。导致内存泄漏。
+2. <span style="color: #F56C6C;">free 后继续使用指针</span>。造成悬空指针，行为未定义。
+3. <span style="color: #F56C6C;">free 非 malloc 申请的内存</span>。比如 `free(&a);` 会崩溃。
+4. <span style="color: #F56C6C;">多次 free 同一块内存</span>。也会崩溃。
 
 ## 动态内存接口首先要设计所有权
 
@@ -261,7 +261,7 @@ int *data = malloc(count * sizeof *data);
 
 ## C++ 中不要把 `new` 当作默认动态数组
 
-学习 `new[]` / `delete[]` 有助于看懂旧代码和对象构造，但新代码的动态数组优先使用 `std::vector<T>`，字符串优先 `std::string`，唯一动态对象优先 `std::make_unique<T>()`。它们在异常和提前返回路径上也能自动清理。
+<span style="color: #67C23A;">学习 `new[]` / `delete[]` 有助于看懂旧代码和对象构造，但新代码的动态数组优先使用 `std::vector<T>`，字符串优先 `std::string`，唯一动态对象优先 `std::make_unique<T>()`。</span>它们在异常和提前返回路径上也能自动清理。
 
 ## 小结
 
@@ -272,4 +272,4 @@ int *data = malloc(count * sizeof *data);
 
 ## 下一篇预告
 
-下一篇《内存安全：越界、泄漏与悬空指针》会把动态内存的错误路径集中讲清楚，并介绍如何用 Sanitizer 尽早发现问题。
+<span style="color: #F56C6C;">下一篇《内存安全：越界、泄漏与悬空指针》会把动态内存的错误路径集中讲清楚，并介绍如何用 Sanitizer 尽早发现问题。</span>

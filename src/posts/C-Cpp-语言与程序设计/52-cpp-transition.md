@@ -14,7 +14,7 @@ tag:
 author: Kingcq
 ---
 
-前面的 C 语言部分让你看清了数组、指针、动态内存和所有权。进入 C++ 后，不是把 `printf` 换成 `cout` 就结束了。现代 C++ 的核心变化是：**让类型和对象生命周期替程序员承担更多约束**。
+前面的 C 语言部分让你看清了数组、指针、动态内存和所有权。进入 C++ 后，不是把 `printf` 换成 `cout` 就结束了。现代 C++ 的核心变化是：<span style="color: #E6A23C;">让类型和对象生命周期替程序员承担更多约束</span>。
 
 ## 编译方式与头文件
 
@@ -96,7 +96,7 @@ std::cout << "length = " << text.size() << '\n';
 const char* c_text = text.c_str();
 ```
 
-这个指针通常只在字符串未被修改或销毁期间有效，不应长期保存。
+<span style="color: #F56C6C;">这个指针通常只在字符串未被修改或销毁期间有效，不应长期保存。</span>
 
 ## `std::vector` 管理动态数组
 
@@ -151,7 +151,7 @@ for (const std::string& name : names) {
 
 ## RAII：资源绑定到对象生命周期
 
-在 C 中，打开文件后必须记得沿每条路径关闭，分配内存后必须手动释放。C++ 倾向于把资源放进对象，让析构函数自动清理：
+在 C 中，打开文件后必须记得沿每条路径关闭，分配内存后必须手动释放。<span style="color: #409EFF;">C++ 倾向于把资源放进对象，让析构函数自动清理：</span>
 
 ```cpp
 {
@@ -164,7 +164,7 @@ for (const std::string& name : names) {
 
 ## 智能指针不是默认替代所有对象
 
-最优先的是直接创建普通对象：
+<span style="color: #67C23A;">最优先的是直接创建普通对象：</span>
 
 ```cpp
 Student student;

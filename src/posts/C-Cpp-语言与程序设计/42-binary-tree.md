@@ -89,7 +89,7 @@ void preorder(const TreeNode *root)
 
 输出：`1 2 4 5 3`。
 
-适合复制树、输出结构前缀表示等场景。
+<span style="color: #409EFF;">适合复制树、输出结构前缀表示等场景。</span>
 
 ## 中序遍历
 
@@ -121,7 +121,7 @@ void postorder(const TreeNode *root)
 }
 ```
 
-输出：`4 5 2 3 1`。释放树时必须先释放子树，再释放当前节点，因此天然使用后序顺序。
+输出：`4 5 2 3 1`。<span style="color: #E6A23C;">释放树时必须先释放子树，再释放当前节点，因此天然使用后序顺序。</span>
 
 ## 释放整棵树
 
@@ -181,7 +181,7 @@ int tree_height(const TreeNode *root)
 
 ## 递归深度风险
 
-平衡树高度约为 `O(log n)`，递归通常很浅；极端退化树可能像链表一样高度为 `n`，递归遍历会消耗 `O(n)` 调用栈并可能栈溢出。
+平衡树高度约为 `O(log n)`，递归通常很浅；<span style="color: #F56C6C;">极端退化树可能像链表一样高度为 `n`，递归遍历会消耗 `O(n)` 调用栈并可能栈溢出。</span>
 
 需要处理不可信大输入时，可以使用显式栈实现迭代遍历。
 
@@ -194,7 +194,7 @@ int tree_height(const TreeNode *root)
 - `tree_destroy(root)` 释放全部节点；
 - 外部不得单独释放仍挂在树中的节点。
 
-如果节点还保存父指针，父指针只是反向借用，不应递归释放父节点。
+<span style="color: #F56C6C;">如果节点还保存父指针，父指针只是反向借用，不应递归释放父节点。</span>
 
 ## 测试清单
 

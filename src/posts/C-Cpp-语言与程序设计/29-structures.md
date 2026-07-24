@@ -42,7 +42,7 @@ struct Student {
 
 ## 结构体的定义与使用
 
-定义结构体类型的同时可以创建变量：
+<span style="color: #409EFF;">定义结构体类型的同时可以创建变量：</span>
 
 ```c
 #include <stdio.h>
@@ -156,7 +156,7 @@ int main(void) {
 访问嵌套成员时，用多个 `.` 逐层深入：`s.birthday.year`。
 
 :::tip 结构体的内存对齐
-你可能注意到一个现象：一个包含 `char` 和 `int` 的结构体，其 `sizeof` 可能不等于各成员大小之和。这是因为编译器会在成员之间插入"填充字节"来对齐内存，以提高 CPU 的访问效率。
+<span style="color: #E6A23C;">你可能注意到一个现象：一个包含 `char` 和 `int` 的结构体，其 `sizeof` 可能不等于各成员大小之和。</span>这是因为编译器会在成员之间插入"填充字节"来对齐内存，以提高 CPU 的访问效率。
 
 ```c
 struct Example {
@@ -167,7 +167,7 @@ struct Example {
 printf("%zu\n", sizeof(struct Example));  // 通常输出 8，而不是 5
 ```
 
-初学阶段无需深究，只需要知道 `sizeof` 结构体 >= 各成员大小之和，不要凭"感觉"假设结构体的大小即可。
+<span style="color: #F56C6C;">初学阶段无需深究，只需要知道 `sizeof` 结构体 >= 各成员大小之和，不要凭"感觉"假设结构体的大小即可。</span>
 :::
 
 ## 结构体数组初步
@@ -184,9 +184,9 @@ Student class[3] = {
 
 ## 常见错误
 
-1. **忘记 `typedef` 时写 `Student s;`**。如果你写的是 `struct Student { ... };`，后面就必须用 `struct Student s;`。
-2. **字符串直接赋值给字符数组**。`s.name = "Alice";` 是错的，用 `strcpy`。
-3. **结构体之间比较**。不能直接用 `==` 比较两个结构体，要逐个成员比较。
+1. <span style="color: #F56C6C;">忘记 `typedef` 时写 `Student s;`</span>。如果你写的是 `struct Student { ... };`，后面就必须用 `struct Student s;`。
+2. <span style="color: #F56C6C;">字符串直接赋值给字符数组</span>。`s.name = "Alice";` 是错的，用 `strcpy`。
+3. <span style="color: #F56C6C;">结构体之间比较</span>。不能直接用 `==` 比较两个结构体，要逐个成员比较。
 
 ## 结构体可能包含填充字节
 

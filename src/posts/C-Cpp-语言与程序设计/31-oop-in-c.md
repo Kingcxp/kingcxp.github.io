@@ -16,7 +16,7 @@ author: Kingcq
 
 ## 为什么要在 C 语言里谈面向对象
 
-一提到面向对象，很多人第一反应是 `C++`、`Java`、`Python` 这些语言。其实，`C` 语言本身没有 `class`、`private`、`virtual` 这些关键字，但**面向对象首先是一种思想**，而不是某门语言的专利。
+一提到面向对象，很多人第一反应是 `C++`、`Java`、`Python` 这些语言。其实，`C` 语言本身没有 `class`、`private`、`virtual` 这些关键字，但<span style="color: #E6A23C;">面向对象首先是一种思想</span>，而不是某门语言的专利。
 
 在 `C` 语言里，我们完全可以用结构体 + 函数指针 + 命名约定来模拟面向对象的核心机制：封装、抽象、以及“把数据和行为绑定在一起”。理解了这一点，后面学习 `C++` 的 `class` 时，你就会明白：`C++` 并不是凭空创造了面向对象，它只是把 `C` 语言里“手动实现”的东西变成了语法糖。
 
@@ -77,7 +77,7 @@ typedef int Age;
 
 ## 命名空间思想：给类型加前缀
 
-`C` 语言没有命名空间（namespace）机制，所有全局类型、函数、宏都处在同一个“大房间”里。项目一大，名字很容易撞车。为了模拟命名空间，常见的做法是**给同一模块的类型加统一前缀**。
+`C` 语言没有命名空间（namespace）机制，所有全局类型、函数、宏都处在同一个“大房间”里。项目一大，名字很容易撞车。为了模拟命名空间，常见的做法是<span style="color: #409EFF;">给同一模块的类型加统一前缀</span>。
 
 比如一个学生管理模块：
 
@@ -100,13 +100,13 @@ void stu_set_score(StuStudent* s, float score);
 
 | 风格 | 示例 | 适用场景 |
 | :-- | :-- | :-- |
-| **蛇形命名 snake_case** | `student_name`, `max_value` | `C` 语言项目、标准库、Linux 内核 |
-| **小驼峰 camelCase** | `studentName`, `maxValue` | `C++` 项目、Java、JavaScript |
-| **大驼峰 PascalCase** | `StudentName`, `MaxValue` | `C++` 类名、结构体名、Java 类名 |
+| <span style="color: #409EFF;">蛇形命名 snake_case</span> | `student_name`, `max_value` | `C` 语言项目、标准库、Linux 内核 |
+| <span style="color: #409EFF;">小驼峰 camelCase</span> | `studentName`, `maxValue` | `C++` 项目、Java、JavaScript |
+| <span style="color: #409EFF;">大驼峰 PascalCase</span> | `StudentName`, `MaxValue` | `C++` 类名、结构体名、Java 类名 |
 
 ### C 语言：基本只用蛇形
 
-`C` 语言社区非常统一：**变量、函数、结构体类型、宏几乎都用 `snake_case`**。唯一的例外是宏常量，习惯全大写加下划线：
+`C` 语言社区非常统一：<span style="color: #409EFF;">变量、函数、结构体类型、宏几乎都用 `snake_case`</span>。唯一的例外是宏常量，习惯全大写加下划线：
 
 ```c
 #define MAX_BUFFER_SIZE 1024
@@ -119,21 +119,21 @@ Linux 内核、`glibc`、`nginx`、`redis` 这些著名 `C` 项目，基本都�
 
 `C++` 因为兼容 `C`，又吸收了很多面向对象的习惯，命名风格比较“杂”：
 
-- **类名 / 结构体名**：通常用大驼峰 `PascalCase`，比如 `class StudentManager`。
-- **变量、函数**：标准库用 `snake_case`（`std::vector`、`std::find_if`），但很多项目用 `camelCase`（`getStudentName`）。
-- **成员变量**：有人喜欢加 `m_` 前缀（`m_name`），有人喜欢加下划线后缀（`name_`），也有人什么都不加。
-- **宏常量**：和 `C` 一样，全大写加下划线。
+- <span style="color: #409EFF;">类名 / 结构体名</span>：通常用大驼峰 `PascalCase`，比如 `class StudentManager`。
+- <span style="color: #409EFF;">变量、函数</span>：标准库用 `snake_case`（`std::vector`、`std::find_if`），但很多项目用 `camelCase`（`getStudentName`）。
+- <span style="color: #409EFF;">成员变量</span>：有人喜欢加 `m_` 前缀（`m_name`），有人喜欢加下划线后缀（`name_`），也有人什么都不加。
+- <span style="color: #409EFF;">宏常量</span>：和 `C` 一样，全大写加下划线。
 
 :::tip 我的建议
 初学阶段，先养成一种稳定的习惯：
 
 - 写 `C` 时，全局使用 `snake_case`，宏用全大写。
-- 写 `C++` 时，类名用 `PascalCase`，变量和函数用 `snake_case` 或 `camelCase` 都可以，但**同一个项目里要统一**。
+- 写 `C++` 时，类名用 `PascalCase`，变量和函数用 `snake_case` 或 `camelCase` 都可以，但<span style="color: #409EFF;">同一个项目里要统一</span>。
 :::
 
 ## 把函数塞进结构体：函数指针
 
-面向对象的核心是“数据 + 行为”打包。`C` 语言里，数据用结构体打包很容易，行为怎么打包呢？答案是**函数指针**。
+面向对象的核心是“数据 + 行为”打包。`C` 语言里，数据用结构体打包很容易，行为怎么打包呢？答案是<span style="color: #409EFF;">函数指针</span>。
 
 函数指针就是“指向函数的指针”。你可以把它存到结构体里，让这个结构体拥有某种“能力”。
 
@@ -194,7 +194,7 @@ int main(void) {
 
 上面的例子有一个问题：每次创建 `Counter` 变量，我们都要手动把三个函数指针赋值一遍。这不仅麻烦，还容易遗漏。
 
-解决办法是写一个专门的**构造函数**（create）来帮我们完成初始化：
+解决办法是写一个专门的<span style="color: #409EFF;">构造函数</span>（create）来帮我们完成初始化：
 
 ```c
 Counter* counter_create(int initial_value) {
@@ -301,13 +301,13 @@ int main(void) {
 
 把代码组织成“对象”的形式，带来的好处至少有这几个：
 
-1. **封装**：把数据和对数据的操作放在一起，外界不需要知道内部细节。比如调用者只用 `set_score`，不用关心分数范围检查写在哪里。
-2. **代码复用**：一个 `Counter` 创建出来后，可以在很多地方复用，而且行为一致。
-3. **易于维护**：修改内部实现时，只要接口不变，调用者就不用改代码。
-4. **更接近人类思维**：我们自然会用“学生”“计数器”这种对象来思考问题，而不是一堆零散的变量和函数。
+1. <span style="color: #409EFF;">封装</span>：把数据和对数据的操作放在一起，外界不需要知道内部细节。比如调用者只用 `set_score`，不用关心分数范围检查写在哪里。
+2. <span style="color: #409EFF;">代码复用</span>：一个 `Counter` 创建出来后，可以在很多地方复用，而且行为一致。
+3. <span style="color: #409EFF;">易于维护</span>：修改内部实现时，只要接口不变，调用者就不用改代码。
+4. <span style="color: #409EFF;">更接近人类思维</span>：我们自然会用“学生”“计数器”这种对象来思考问题，而不是一堆零散的变量和函数。
 
 :::tip C 与 C++ 的关系
-你现在在 `C` 语言里手动实现了：类型别名、命名空间前缀、构造函数、析构函数、方法绑定。等到 `C++` 部分，你会发现 `class` 本质上就是把这堆手动操作自动化了。
+你现在在 `C` 语言里手动实现了：类型别名、命名空间前缀、构造函数、析构函数、方法绑定。<span style="color: #409EFF;">等到 `C++` 部分，你会发现 `class` 本质上就是把这堆手动操作自动化了。</span>
 :::
 
 ## C 中更实用的封装：不透明结构体

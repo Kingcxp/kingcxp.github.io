@@ -27,7 +27,7 @@ author: Kingcq
 
 ## break：跳出循环
 
-`break` 的作用是**立即终止当前所在的循环**，然后跳到循环后面的代码继续执行。
+`break` 的作用是<span style="color: #409EFF;">立即终止当前所在的循环</span>，然后跳到循环后面的代码继续执行。
 
 ```c
 #include <stdio.h>
@@ -54,12 +54,12 @@ int main() {
 :::tip
 `break` 只能跳出一层循环。如果你在嵌套循环里用 `break`，它只会跳出最内层那个循环，外层的循环还会继续执行。
 
-另外注意，`break` 在循环和 `switch` 中的效果是一样的——都是"立即跳出当前结构"。如果 `switch` 在一个循环内部，`break` 只跳出 `switch` 而不会跳出循环，反之亦然。
+<span style="color: #E6A23C;">另外注意，`break` 在循环和 `switch` 中的效果是一样的——都是"立即跳出当前结构"。</span>如果 `switch` 在一个循环内部，`break` 只跳出 `switch` 而不会跳出循环，反之亦然。
 :::
 
 ## continue：跳过本次
 
-`continue` 的作用是**跳过当前这次循环的剩余部分**，直接进入下一次循环的判断。
+`continue` 的作用是<span style="color: #409EFF;">跳过当前这次循环的剩余部分</span>，直接进入下一次循环的判断。
 
 ```c
 #include <stdio.h>
@@ -252,7 +252,7 @@ for (int i = 0; i < n; i++) {
 
 ## 常见错误与注意事项
 
-1. **`break` 和 `continue` 只能在循环或 `switch` 里使用**
+1. <span style="color: #F56C6C;">`break` 和 `continue` 只能在循环或 `switch` 里使用</span>
 
 ```c
 if (x > 0) {
@@ -260,7 +260,7 @@ if (x > 0) {
 }
 ```
 
-2. **`continue` 在 while 和 do-while 里要当心**
+2. <span style="color: #F56C6C;">`continue` 在 while 和 do-while 里要当心</span>
 
 ```c
 int i = 0;
@@ -274,7 +274,7 @@ while (i < 5) {
 
 在 `while` 里用 `continue` 时，要确保更新循环变量的代码不会被跳过。
 
-3. **滥用 break 导致循环逻辑不清晰**
+3. <span style="color: #F56C6C;">滥用 break 导致循环逻辑不清晰</span>
 
 如果循环里到处都是 `break`，读者很难判断循环到底什么时候结束。建议只在真正需要提前退出时使用。
 
@@ -304,7 +304,7 @@ while (i < n) {
 - 重新组织为单独搜索函数；
 - 在 C 中，对统一资源清理使用受控的 `goto cleanup`。
 
-`goto` 不是绝对禁用。它不适合制造任意跳转，但在 C 函数尾部集中释放多项资源，往往比复制多段清理代码更安全：
+`goto` 不是绝对禁用。<span style="color: #67C23A;">它不适合制造任意跳转，但在 C 函数尾部集中释放多项资源，往往比复制多段清理代码更安全：</span>
 
 ```c
 if (step1_failed) goto cleanup;

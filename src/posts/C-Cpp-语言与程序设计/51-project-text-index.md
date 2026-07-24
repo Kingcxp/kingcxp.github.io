@@ -49,7 +49,7 @@ wordindex [选项] FILE
 - 默认统一转换为小写；
 - 非 ASCII 文本按字节处理，不承诺正确分词。
 
-这条限制很重要。UTF-8 中文分词、Unicode 大小写折叠和规范化是完全不同的主题，不能假装 `tolower` 已经解决。
+这条限制很重要。<span style="color: #F56C6C;">UTF-8 中文分词、Unicode 大小写折叠和规范化是完全不同的主题，不能假装 `tolower` 已经解决。</span>
 
 ## 词法状态机
 
@@ -91,7 +91,7 @@ typedef struct WordEntry {
 WordEntry **entries = malloc(table.size * sizeof(entries[0]));
 ```
 
-数组元素只是借用节点地址，节点仍由哈希表拥有。排序数组不会移动或复制字符串内容。
+<span style="color: #409EFF;">数组元素只是借用节点地址，节点仍由哈希表拥有。</span>排序数组不会移动或复制字符串内容。
 
 ## 比较器
 
@@ -113,7 +113,7 @@ int compare_frequency(const void *left, const void *right)
 
 ## 输出与大文件
 
-不要把整个文件一次性读入内存。逐块或逐行处理，内存主要取决于：
+不要把整个文件一次性读入内存。<span style="color: #E6A23C;">逐块或逐行处理，内存主要取决于：</span>
 
 - 不同单词数量；
 - 单词字符串总长度；
@@ -141,7 +141,7 @@ wordindex/
     └── test_word_table.c
 ```
 
-分词器可以通过回调把每个单词交给计数器，从而避免把所有 token 先存起来。
+<span style="color: #67C23A;">分词器可以通过回调把每个单词交给计数器，从而避免把所有 token 先存起来。</span>
 
 ## 测试数据
 

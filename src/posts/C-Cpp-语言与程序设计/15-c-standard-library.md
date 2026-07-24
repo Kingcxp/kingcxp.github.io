@@ -13,7 +13,7 @@ tag:
 author: Kingcq
 ---
 
-会写函数之后，很容易产生一种错觉：所有功能都应该自己实现。事实上，C 标准库已经提供了输入输出、字符串、内存、数学、字符分类、时间、排序和错误处理等基础工具。学会查阅和正确调用标准库，是从练习代码走向实际程序的重要一步。
+<span style="color: #67C23A;">会写函数之后，很容易产生一种错觉：所有功能都应该自己实现。</span>事实上，C 标准库已经提供了输入输出、字符串、内存、数学、字符分类、时间、排序和错误处理等基础工具。学会查阅和正确调用标准库，是从练习代码走向实际程序的重要一步。
 
 ## 标准库是什么
 
@@ -80,14 +80,14 @@ int main(void)
 }
 ```
 
-`memset` 按**字节**填充值，不能用来把 `int` 数组设置成任意整数：
+`memset` 按<span style="color: #409EFF;">字节</span>填充值，不能用来把 `int` 数组设置成任意整数：
 
 ```c
 int values[4];
 memset(values, 0, sizeof(values)); // 清零通常可行
 ```
 
-但 `memset(values, 1, sizeof(values))` 并不等于把每个 `int` 设成 1。
+<span style="color: #E6A23C;">但 `memset(values, 1, sizeof(values))` 并不等于把每个 `int` 设成 1。</span>
 
 ## `<ctype.h>`：字符分类
 
@@ -107,7 +107,7 @@ int main(void)
 }
 ```
 
-除 `EOF` 外，`isalpha`、`isdigit` 等函数的参数必须能表示为 `unsigned char`。直接把可能为负的普通 `char` 传进去可能产生未定义行为，因此常见写法是先转换。
+除 `EOF` 外，`isalpha`、`isdigit` 等函数的参数必须能表示为 `unsigned char`。<span style="color: #F56C6C;">直接把可能为负的普通 `char` 传进去可能产生未定义行为，因此常见写法是先转换。</span>
 
 ## `<stdlib.h>`：可靠地解析数字
 
@@ -135,7 +135,7 @@ int parse_int(const char *text, int *result)
 }
 ```
 
-这里体现了一个重要模式：**库函数通常给出原始机制，调用者负责根据自己的目标类型继续验证。**
+这里体现了一个重要模式：<span style="color: #67C23A;">库函数通常给出原始机制，调用者负责根据自己的目标类型继续验证。</span>
 
 ## `qsort`：用回调函数排序
 
