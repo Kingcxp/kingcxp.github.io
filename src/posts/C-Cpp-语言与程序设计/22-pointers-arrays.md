@@ -33,14 +33,14 @@ int arr[5] = {10, 20, 30, 40, 50};
 现在告诉你一个关键事实：<span style="color: #409EFF;">数组名 `arr` 在大多数表达式中会自动转换为指向首元素 `arr[0]` 的指针。</span>数组本身仍不是一个指针变量。
 
 ```mermaid
-graph LR
+graph TB
     subgraph 数组在内存中连续存放
-        A[arr[0]<br/>地址: 0x1000<br/>值: 10]
-        B[arr[1]<br/>地址: 0x1004<br/>值: 20]
-        C[arr[2]<br/>地址: 0x1008<br/>值: 30]
-        D[arr[3]<br/>地址: 0x100C<br/>值: 40]
+        A["arr[0]<br/>地址: 0x1000<br/>值: 10"]
+        B["arr[1]<br/>地址: 0x1004<br/>值: 20"]
+        C["arr[2]<br/>地址: 0x1008<br/>值: 30"]
+        D["arr[3]<br/>地址: 0x100C<br/>值: 40"]
     end
-    P[p = arr<br/>指向 0x1000] --> A
+    P["p = arr<br/>指向 0x1000"] --> A
     A --> B --> C --> D
 ```
 

@@ -80,8 +80,7 @@ lambda 只是借用 `sum`。<span style="color: #F56C6C;">如果 lambda 活得�
 危险示例：
 
 ```cpp
-auto make_bad_callback()
-{
+auto make_bad_callback() {
     int local = 42;
     return [&local] { return local; }; // 返回后 local 已销毁
 }
@@ -159,8 +158,7 @@ std::function<int(int)> operation = [](int x) { return x * 2; };
 
 ```cpp
 template <typename F>
-void repeat(int count, F action)
-{
+void repeat(int count, F action) {
     for (int i = 0; i < count; ++i) action(i);
 }
 ```

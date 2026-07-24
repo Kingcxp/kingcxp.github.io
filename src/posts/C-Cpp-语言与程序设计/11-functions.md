@@ -33,13 +33,11 @@ author: Kingcq
 #include <stdio.h>
 
 // 函数定义：返回类型 int，函数名 add，参数是 a 和 b
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 
-int main(void)
-{
+int main() {
     int result = add(3, 5);  // 函数调用
     printf("3 + 5 = %d\n", result);
     return 0;
@@ -70,8 +68,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-int max(int a, int b)
-{
+int max(int a, int b) {
     if (a > b) {
         return a;
     } else {
@@ -79,8 +76,7 @@ int max(int a, int b)
     }
 }
 
-int main(void)
-{
+int main() {
     printf("较大值：%d\n", max(10, 20));
     return 0;
 }
@@ -89,7 +85,7 @@ int main(void)
 一个函数可以有多个 `return`。对参数检查使用“尽早返回”往往能减少嵌套；当函数需要统一释放多个资源时，集中到一个清理出口又可能更稳妥。不要机械追求出口数量，重点是让控制流和资源清理一眼可见。
 
 :::tip main 函数的参数
-你可能看到过 `main(void)` 和 `main()` 两种写法。在 `C` 语言中，`main(void)` 明确表示"不接受任何参数"，而 `main()` 表示"参数个数未指定"。为了代码清晰，推荐写 `int main(void)`。在 `C++` 中两者都表示没有参数。
+你可能看到过 `main()` 和 `main()` 两种写法。在 `C` 语言中，`main()` 明确表示"不接受任何参数"，而 `main()` 表示"参数个数未指定"。为了代码清晰，推荐写 `int main()`。在 `C++` 中两者都表示没有参数。
 :::
 
 ## void 函数
@@ -99,13 +95,11 @@ int main(void)
 ```c
 #include <stdio.h>
 
-void print_hello(void)
-{
+void print_hello(void) {
     printf("你好，欢迎学习 C 语言！\n");
 }
 
-int main(void)
-{
+int main() {
     print_hello();  // 调用 void 函数，不需要接收返回值
     return 0;
 }
@@ -132,15 +126,13 @@ int main(void)
 // 函数原型
 int add(int a, int b);
 
-int main(void)
-{
+int main() {
     printf("%d\n", add(2, 3));
     return 0;
 }
 
 // 函数定义
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 ```
@@ -166,8 +158,7 @@ int add(int a, int b);
 ```c
 // math_utils.c
 #include "math_utils.h"
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 ```
@@ -177,8 +168,7 @@ int add(int a, int b)
 #include <stdio.h>
 #include "math_utils.h"
 
-int main(void)
-{
+int main() {
     printf("%d\n", add(3, 4));
     return 0;
 }
@@ -217,24 +207,100 @@ bool divide(int numerator, int denominator, double *out);
 
 这种约定比“函数内部怎么写”更影响调用者能否正确使用。
 
-## 调用栈是有用模型，但不是全部实现
+## 函数的调用开销与内联优化
 
-函数调用通常需要保存返回位置和本次调用的局部状态，可以抽象成栈帧。实际 ABI 可能先用寄存器传参，优化器也可能内联函数，让物理栈帧消失。学习生命周期时使用栈模型，判断语言行为时以 C 规则为准。
+每次调用函数时，程序需要做几件事：
 
-## 返回多个结果的常见方式
+1. 把参数的值复制一份交给函数
+2. 记住当前执行到哪里了，方便函数执行完后回来
+3. 为函数的局部变量分配临时空间
+4. 跳转到函数代码的位置执行
+5. 执行完后把结果带回来，跳回原来的位置
 
-- 返回一个结构体；
-- 返回状态码，通过输出指针写结果；
-- 让调用者提供缓冲区和容量。
+这些操作在底层都有成本。对于很小的函数（比如只有一两行代码的函数），函数调用的开销可能比函数本身做的事情还多。
 
-不要返回局部数组或局部变量的地址。若返回动态内存，函数名和文档应明确所有权，例如 `create_...` / `destroy_...` 成对出现。
+### 内联函数是什么？
 
-## 函数应围绕单一抽象层次
+**内联**（inline）是编译器做的一种优化：它会把函数调用的地方直接替换成函数体的代码，而不是真的跳转过去再跳回来。
 
-一个函数同时读取用户输入、解析协议、排序数据、写文件，往往难以测试。把“获取数据”“纯计算”“输出结果”分开，核心计算函数就可以直接用固定输入测试，不依赖终端状态。
+打个比方：正常情况下，你需要跑到隔壁房间拿个工具，用完再跑回来（函数调用）。而内联优化相当于：你把工具直接复制一份放在手边，省去了来回跑的时间。
 
-## 小结与下一篇预告
 
-今天我们学习了函数的核心概念：为什么需要函数、如何定义和调用函数、`return` 和 `void` 的用法，以及函数原型的作用。函数是 C 语言组织代码的基本单元，掌握它之后，你就可以写出结构更清晰的程序了。
+```mermaid
+flowchart LR
+    subgraph 普通调用
+        A1[调用 add(3, 5)] --> B1[跳转到 add 函数]
+        B1 --> C1[执行 a + b]
+        C1 --> D1[返回结果]
+        D1 --> E1[继续执行]
+    end
+    subgraph 内联优化
+        A2[add(3, 5) 被替换<br/>为 3 + 5] --> B2[直接得到结果 8]
+        B2 --> C2[继续执行]
+    end
+```
 
-下一篇我们会聊<span style="color: #409EFF;">函数的参数传递机制</span>，以及<span style="color: #409EFF;">局部变量和全局变量</span>的区别——这对理解 C 语言的作用域和内存管理非常关键。
+### 怎么使用 inline 关键字
+
+在函数的返回类型前加上 `inline` 关键字，可以向编译器**建议**将这个函数内联展开：
+
+```c
+#include <stdio.h>
+
+// 建议编译器将 add 内联展开
+inline int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 5);  // 编译器可能直接替换成 int result = 3 + 5;
+    printf("%d\n", result);
+    return 0;
+}
+```
+
+:::tip inline 只是建议，不是命令
+`inline` 关键字只是向编译器发出一个请求（建议），编译器**可以忽略它**。现代编译器优化能力很强，即使你不写 `inline`，编译器也会自动判断哪些小函数适合内联；反过来，你写了 `inline`，编译器也可能选择不内联。
+:::
+
+### 内联的效果
+
+- **优点**：省去了函数调用的开销（参数的复制、栈帧的分配、跳转和返回），对于频繁调用的小函数，可以提升程序运行速度。
+- **缺点**：每次调用都展开一次，如果调用很多次，生成的代码会变长（代码膨胀），反而可能降低程序性能（因为 CPU 缓存压力变大）。
+
+所以内联最适合**短小、频繁调用**的函数，不适合代码很长或者很少调用的函数。
+
+### 内联选择建议
+
+在学习阶段，不要费心去给函数加 `inline`。写出清晰、正确的代码是第一位的。等你积累了一定的项目经验后，再在性能分析工具的指导下，针对性地考虑内联优化。
+
+## 一个函数只做一件事
+
+写函数的时候有一个很实用的原则：<span style="color: #409EFF;">一个函数应该只做一件确定的事</span>。
+
+如果你写了一个函数，发现它既在接收用户输入，又在做计算，还在输出结果，那你应该把它拆开：
+
+```c
+// ❌ 混在一起：输入、计算、输出全在一个函数里
+void process(void) {
+    int a, b;
+    scanf("%d%d", &a, &b);
+    int sum = a + b;
+    printf("%d\n", sum);
+}
+
+// ✅ 拆开：每个函数只负责一件事
+int read_two_numbers(void) {
+    int a, b;
+    scanf("%d%d", &a, &b);
+    return a + b;
+}
+
+void print_sum(int sum) {
+    printf("%d\n", sum);
+}
+```
+
+这样拆分之后，不管将来想把输入改成从文件读取，还是把输出改成写入文件，都只需要改对应的函数，不需要动其他部分。而且 `read_two_numbers` 这个逻辑可以被其他地方复用。
+
+写函数时问自己一个问题：**这个函数的名字能准确概括它做的事情吗？** 如果不能，说明它可能做了太多事，需要拆开。

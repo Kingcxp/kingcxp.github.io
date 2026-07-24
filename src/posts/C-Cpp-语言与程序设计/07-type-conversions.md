@@ -62,8 +62,7 @@ unsigned c = -1;   // 转成一个很大的无符号值
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     unsigned char a = 200;
     unsigned char b = 100;
 
@@ -92,8 +91,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int debt = -1;
     unsigned int balance = 1;
 
@@ -120,7 +118,25 @@ if (debt < 0 || (unsigned int)debt < balance) {
 
 ## `size_t` 为什么经常制造警告
 
-<span style="color: #E6A23C;">`sizeof`、字符串长度和容器大小通常使用 `size_t`。</span>它是无符号整数类型，具体位宽由平台决定。
+<span style="color: #E6A23C;">`sizeof`、字符串长度和容器大小通常使用 `size_t`。</span>它是无符号整数类型，但它的位宽（也就是它占几个字节）不是固定不变的，而是由运行程序的平台决定的。
+
+### 平台？
+
+"平台"在这里主要指操作系统的**体系结构**——即你的 CPU 和操作系统组合是 32 位还是 64 位的。`size_t` 的设计原则是：它必须能表示系统中**最大可能的内存大小**。因此：
+
+- 在 **32 位平台**上，内存地址范围是 0 到 2³²-1（约 4 GB），所以 `size_t` 是 32 位的无符号整数，最大值约 43 亿。
+- 在 **64 位平台**上，内存地址范围是 0 到 2⁶⁴-1，所以 `size_t` 是 64 位的无符号整数，最大值则大得多。
+
+| 平台 | `size_t` 位宽 | 最大值 |
+| :-- | :--: | :-- |
+| 32 位 | 32 bit（4 字节） | 约 43 亿 |
+| 64 位 | 64 bit（8 字节） | 约 1.8 × 10¹⁹ |
+
+### 何意味？
+
+你写 `printf("%zu", sizeof(int))`，其中 `%zu` 就是专门用来输出 `size_t` 类型的占位符。`sizeof` 返回的类型就是 `size_t`，所以用 `%zu` 最安全。
+
+如果你在 32 位电脑上编译，`sizeof` 的结果用 `%zu` 输出时是一个 4 字节的值；在 64 位电脑上则是 8 字节。但你不需要手动区分——用 `%zu` 编译器会自动处理。
 
 ```c
 size_t length = strlen(text);
@@ -143,7 +159,7 @@ for (size_t i = length; i > 0; --i) {
 }
 ```
 
-## 整数溢出不是同一件事
+## 整数溢出
 
 ### 无符号整数
 
@@ -173,8 +189,7 @@ x = x + 1; // 未定义行为
 #include <limits.h>
 #include <stdbool.h>
 
-bool add_int(int a, int b, int *result)
-{
+bool add_int(int a, int b, int *result) {
     if ((b > 0 && a > INT_MAX - b) ||
         (b < 0 && a < INT_MIN - b)) {
         return false;
@@ -229,8 +244,7 @@ double average = static_cast<double>(sum) / count;
 #include <math.h>
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     double value = 0.1 + 0.2;
     printf("%.17f\n", value);
 
@@ -242,26 +256,5 @@ int main(void)
 ```
 
 误差阈值应根据数值尺度和业务要求设计，不能机械地对所有问题使用同一个常数。
-
-## 编译器警告应该怎样看
-
-建议继续使用：
-
-```bash
-gcc demo.c -std=c17 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion
-```
-
-`-Wconversion` 和 `-Wsign-conversion` 可能产生较多提示，但它们很适合专门练习类型转换。真实项目中是否长期启用，要结合代码风格和噪声程度决定。
-
-## 检查清单
-
-看到混合类型表达式时，依次问：
-
-1. 每个操作数原本是什么类型？
-2. 是否先发生整数提升？
-3. 最终共同类型是什么？
-4. 结果再赋值时是否窄化？
-5. 是否可能溢出、截断或失去精度？
-6. 是否把有符号和无符号值混在了一起？
 
 下一篇进入分支结构。理解了转换规则后，你会更容易判断一个条件表达式究竟在比较什么。

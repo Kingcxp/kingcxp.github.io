@@ -226,8 +226,7 @@ bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 
 默认配置通常可以直接用。如果你需要手动调整，保持下面的配置即可：
 
-```json
-{
+```json {
     "version": "0.2.0",
     "configurations": [
         {
@@ -336,7 +335,7 @@ graph LR
 ## Sanitizer 应成为日常编译配置
 
 ```bash
-gcc demo.c -std=c17 -Wall -Wextra -Wpedantic -g \
+gcc demo.c -std=c11 -Wall -Wextra -Wpedantic -g \
     -fsanitize=address,undefined -fno-omit-frame-pointer -o demo
 ```
 

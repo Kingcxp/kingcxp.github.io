@@ -269,7 +269,7 @@ clean:
 
 ```make
 CC := gcc
-CFLAGS := -std=c17 -Wall -Wextra -Wpedantic -g -MMD -MP
+CFLAGS := -std=c11 -Wall -Wextra -Wpedantic -g -MMD -MP
 LDFLAGS :=
 LDLIBS :=
 

@@ -36,6 +36,78 @@ C 语言标准规定了一组头文件、类型、宏和函数。符合标准的
 
 头文件提供声明。真正的实现通常在 C 运行库中，链接阶段会把需要的符号连接进程序。
 
+## 如何查阅标准库文档
+
+标准库有几十个头文件、成百上千个函数。你不可能也不需要全部记住。遇到不确定的函数时，学会查文档比硬记更重要。
+
+### 推荐查阅站点
+
+C 和 C++ 标准库文档的权威来源是 **cppreference**，它提供中文翻译：
+
+> **https://zh.cppreference.com**
+
+在搜索引擎里搜“cppreference 函数名”通常就能直接找到。
+
+### 什么时候需要查文档
+
+常见场景：
+
+1. **不确定函数怎么用**——比如 `strcpy` 和 `memcpy` 参数顺序是什么？
+2. **想知道有哪些函数可用**——比如想处理字符串，但不知道 `<string.h>` 提供了什么。
+3. **遇到了奇怪的行为**——比如为什么 `strlen` 读出的长度和预期不一样？文档会告诉你它不含 `\0`。
+4. **函数返回值不清楚**——比如 `printf` 返回什么？文档会告诉你返回成功打印的字符数。
+
+### 怎么查：一个具体例子
+
+假设你想把字符串 "123" 转换成整数 123。你可能会想到用某个函数，但忘了它叫什么、参数怎么写。
+
+打开 zh.cppreference.com，在搜索框输入 **str**，你会看到一大堆以 `str` 开头的函数。往下翻，找到 `strtol`——它能把字符串转成 `long`。
+
+```c
+long strtol(const char *str, char **endptr, int base);
+```
+
+文档会告诉你：
+
+- **参数**：`str` 是输入字符串，`endptr` 可以返回第一个未转换字符的位置（用于检查），`base` 是进制（填 10 表示十进制）。
+- **返回值**：转换后的 `long`，失败时返回 `0`。
+- **错误处理**：溢出时设置 `errno` 为 `ERANGE`。
+
+看到这里，你就能写出调用代码了：
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    const char *text = "123";
+    char *end;
+    long value = strtol(text, &end, 10);
+    if (*end != '\0') {
+        printf("转换不完整，遇到：%s\n", end);
+    } else {
+        printf("转换结果：%ld\n", value);
+    }
+    return 0;
+}
+```
+
+:::tip 查文档不是背书
+你不需要记住所有函数的参数细节。知道"有这么个函数"，然后使用时查文档确认参数顺序和返回值，这才是专业的工作方式。Google、zh.cppreference.com 搜索框、本地 IDE 的自动补全都行，用习惯就好。
+:::
+
+### 查看整个头文件提供的功能
+
+有时候你不知道某个问题应该用哪个函数。这时候可以打开 zh.cppreference.com，找到对应的头文件页面。比如打开 `<string.h>` 的页面，就能看到它提供的所有函数分类：
+
+- 复制：`memcpy`、`memmove`、`strcpy`、`strncpy`……
+- 拼接：`strcat`、`strncat`……
+- 比较：`memcmp`、`strcmp`、`strncmp`……
+- 查找：`strchr`、`strrchr`、`strstr`……
+- 长度：`strlen`……
+
+快速扫一遍，知道"原来有这么个函数"，等真需要的时候回来查具体用法就行。
+
 ## 先查契约，再调用函数
 
 使用库函数前至少要知道：
@@ -70,8 +142,7 @@ void *memset(void *dest, int value, size_t count);
 #include <stdio.h>
 #include <string.h>
 
-int main(void)
-{
+int main(void) {
     char text[] = "ABCDE";
     memmove(text + 1, text, 4);
     text[5] = '\0';
@@ -95,8 +166,7 @@ memset(values, 0, sizeof(values)); // 清零通常可行
 #include <ctype.h>
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int ch = 'a';
     if (isalpha((unsigned char)ch)) {
         ch = toupper((unsigned char)ch);
@@ -119,8 +189,7 @@ int main(void)
 #include <stdio.h>
 #include <stdlib.h>
 
-int parse_int(const char *text, int *result)
-{
+int parse_int(const char *text, int *result) {
     char *end = NULL;
     errno = 0;
     long value = strtol(text, &end, 10);
@@ -143,15 +212,13 @@ int parse_int(const char *text, int *result)
 #include <stdio.h>
 #include <stdlib.h>
 
-int compare_int(const void *left, const void *right)
-{
+int compare_int(const void *left, const void *right) {
     int a = *(const int *)left;
     int b = *(const int *)right;
     return (a > b) - (a < b);
 }
 
-int main(void)
-{
+int main(void) {
     int values[] = {5, 1, 4, 2, 3};
     size_t count = sizeof(values) / sizeof(values[0]);
 
@@ -175,8 +242,7 @@ int main(void)
 #include <stdint.h>
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int32_t value = INT32_C(123456);
     printf("%" PRId32 "\n", value);
     return 0;
@@ -191,8 +257,7 @@ int main(void)
 #include <math.h>
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     printf("%.2f\n", sqrt(2.0));
     return 0;
 }
@@ -201,7 +266,7 @@ int main(void)
 某些 Unix 工具链需要显式链接数学库：
 
 ```bash
-gcc demo.c -std=c17 -Wall -Wextra -Wpedantic -lm -o demo
+gcc demo.c -std=c11 -Wall -Wextra -Wpedantic -lm -o demo
 ```
 
 链接选项通常放在使用它的目标文件之后。
@@ -214,8 +279,7 @@ gcc demo.c -std=c17 -Wall -Wextra -Wpedantic -lm -o demo
 #include <stdio.h>
 #include <time.h>
 
-int main(void)
-{
+int main(void) {
     clock_t begin = clock();
 
     volatile long long sum = 0;

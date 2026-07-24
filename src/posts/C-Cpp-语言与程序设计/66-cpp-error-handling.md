@@ -30,8 +30,7 @@ author: Kingcq
 #include <stdexcept>
 #include <string>
 
-int parse_age(const std::string& text)
-{
+int parse_age(const std::string& text) {
     std::size_t used = 0;
     int value = std::stoi(text, &used);
 
@@ -65,8 +64,7 @@ try {
 异常传播时，已经构造完成的局部对象会按逆序析构：
 
 ```cpp
-void process(const std::string& path)
-{
+void process(const std::string& path) {
     std::ifstream file(path); // 自动管理文件
     std::vector<int> values;  // 自动管理内存
     // 后续抛出异常时，file 和 values 仍会析构
@@ -107,8 +105,7 @@ void swap(Buffer& other) noexcept;
 #include <optional>
 #include <string>
 
-std::optional<int> find_score(const std::string& name)
-{
+std::optional<int> find_score(const std::string& name) {
     if (name == "Alice") return 95;
     return std::nullopt;
 }
@@ -136,8 +133,7 @@ if (auto score = find_score("Alice")) {
 
 using ParseResult = std::variant<int, std::string>;
 
-ParseResult parse_number(const std::string& text)
-{
+ParseResult parse_number(const std::string& text) {
     try {
         return std::stoi(text);
     } catch (const std::exception& error) {
@@ -196,14 +192,12 @@ std::visit([](const auto& value) {
 #include <exception>
 #include <iostream>
 
-int run_application()
-{
+int run_application() {
     // 真正程序的顶层流程
     return 0;
 }
 
-int main()
-{
+int main() {
     try {
         return run_application();
     } catch (const std::exception& error) {

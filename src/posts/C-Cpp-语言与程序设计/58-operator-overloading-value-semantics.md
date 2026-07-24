@@ -47,8 +47,7 @@ private:
     double y_;
 };
 
-Vector2 operator+(Vector2 left, const Vector2& right)
-{
+Vector2 operator+(Vector2 left, const Vector2& right) {
     left += right;
     return left;
 }
@@ -72,13 +71,11 @@ public:
 ## 相等比较
 
 ```cpp
-bool operator==(const Vector2& left, const Vector2& right)
-{
+bool operator==(const Vector2& left, const Vector2& right) {
     return left.x() == right.x() && left.y() == right.y();
 }
 
-bool operator!=(const Vector2& left, const Vector2& right)
-{
+bool operator!=(const Vector2& left, const Vector2& right) {
     return !(left == right);
 }
 ```
@@ -123,8 +120,7 @@ private:
 ```cpp
 #include <ostream>
 
-std::ostream& operator<<(std::ostream& out, const Vector2& value)
-{
+std::ostream& operator<<(std::ostream& out, const Vector2& value) {
     return out << '(' << value.x() << ", " << value.y() << ')';
 }
 ```

@@ -38,16 +38,14 @@ int clamp(int value, int low, int high);
 ```c
 #include <assert.h>
 
-int clamp(int value, int low, int high)
-{
+int clamp(int value, int low, int high) {
     assert(low <= high);
     if (value < low) return low;
     if (value > high) return high;
     return value;
 }
 
-int main(void)
-{
+int main(void) {
     assert(clamp(5, 0, 10) == 5);
     assert(clamp(-1, 0, 10) == 0);
     assert(clamp(11, 0, 10) == 10);
@@ -102,8 +100,7 @@ assert(scanf("%d", &value) == 1); // 发布构建中可能根本不执行 scanf
 #include <assert.h>
 #include <stddef.h>
 
-int clamp(int value, int low, int high)
-{
+int clamp(int value, int low, int high) {
     assert(low <= high);
     if (value < low) return low;
     if (value > high) return high;
@@ -117,8 +114,7 @@ typedef struct {
     int expected;
 } ClampCase;
 
-int main(void)
-{
+int main(void) {
     const ClampCase cases[] = {
         {5, 0, 10, 5},
         {-1, 0, 10, 0},
@@ -163,7 +159,7 @@ int main(void)
 GCC 或 Clang 常用：
 
 ```bash
-gcc demo.c -std=c17 -Wall -Wextra -Wpedantic \
+gcc demo.c -std=c11 -Wall -Wextra -Wpedantic \
     -fsanitize=address,undefined -fno-omit-frame-pointer -g -o demo
 ```
 
@@ -221,8 +217,7 @@ gcc -Iinclude src/math_utils.c src/main.c -o app
 下面的函数很难测试：
 
 ```c
-void calculate(void)
-{
+void calculate(void) {
     int a, b;
     scanf("%d%d", &a, &b);
     printf("%d\n", a + b);
@@ -232,8 +227,7 @@ void calculate(void)
 把纯计算拆开后更容易验证：
 
 ```c
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 ```

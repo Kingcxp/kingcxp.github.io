@@ -46,8 +46,7 @@ author: Kingcq
 ```c
 #include <stddef.h>
 
-void merge(int a[], int temp[], size_t left, size_t mid, size_t right)
-{
+void merge(int a[], int temp[], size_t left, size_t mid, size_t right) {
     size_t i = left;
     size_t j = mid;
     size_t out = left;
@@ -77,8 +76,7 @@ void merge(int a[], int temp[], size_t left, size_t mid, size_t right)
 #include <stdint.h>
 #include <stdlib.h>
 
-void merge_sort_range(int a[], int temp[], size_t left, size_t right)
-{
+void merge_sort_range(int a[], int temp[], size_t left, size_t right) {
     if (right - left <= 1) return;
 
     size_t mid = left + (right - left) / 2;
@@ -87,8 +85,7 @@ void merge_sort_range(int a[], int temp[], size_t left, size_t right)
     merge(a, temp, left, mid, right);
 }
 
-int merge_sort(int a[], size_t count)
-{
+int merge_sort(int a[], size_t count) {
     if (count < 2) return 1;
     if (count > SIZE_MAX / sizeof(a[0])) return 0;
 
@@ -120,15 +117,13 @@ int merge_sort(int a[], size_t count)
 ```c
 #include <stddef.h>
 
-static void swap_int(int *a, int *b)
-{
+static void swap_int(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-size_t partition(int a[], size_t left, size_t right)
-{
+size_t partition(int a[], size_t left, size_t right) {
     int pivot = a[right - 1];
     size_t boundary = left;
 
@@ -157,8 +152,7 @@ pivot_index          == pivot
 直接递归 `[left, pivot)` 和 `[pivot+1, right)`：
 
 ```c
-void quick_sort_range(int a[], size_t left, size_t right)
-{
+void quick_sort_range(int a[], size_t left, size_t right) {
     while (right - left > 1) {
         size_t pivot = partition(a, left, right);
 
@@ -173,8 +167,7 @@ void quick_sort_range(int a[], size_t left, size_t right)
     }
 }
 
-void quick_sort(int a[], size_t count)
-{
+void quick_sort(int a[], size_t count) {
     quick_sort_range(a, 0, count);
 }
 ```

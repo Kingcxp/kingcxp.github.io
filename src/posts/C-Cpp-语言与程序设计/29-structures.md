@@ -212,8 +212,7 @@ Student b = a;
 ## 大结构体可用只读指针传参
 
 ```c
-void print_student(const Student *student)
-{
+void print_student(const Student *student) {
     if (student == NULL) return;
     printf("%s\n", student->name);
 }

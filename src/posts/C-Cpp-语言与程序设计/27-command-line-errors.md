@@ -39,8 +39,7 @@ int main(int argc, char **argv);
 ```c
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     printf("argc = %d\n", argc);
     for (int i = 0; i < argc; ++i) {
         printf("argv[%d] = %s\n", i, argv[i]);
@@ -85,8 +84,7 @@ int main(int argc, char *argv[])
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     bool show_numbers = false;
     const char *path = NULL;
 
@@ -182,8 +180,7 @@ if (file == NULL) {
 ```c
 #include <stdbool.h>
 
-bool divide(double a, double b, double *result)
-{
+bool divide(double a, double b, double *result) {
     if (b == 0.0) return false;
     *result = a / b;
     return true;
@@ -210,8 +207,7 @@ typedef enum {
 ## 不要在底层函数里随意退出程序
 
 ```c
-void load_config(void)
-{
+void load_config(void) {
     if (/* 失败 */) {
         exit(1); // 库函数直接结束整个进程
     }
@@ -242,8 +238,7 @@ void load_config(void)
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     if (argc != 2) {
         fprintf(stderr, "用法：%s FILE\n", argv[0]);
         return 2;

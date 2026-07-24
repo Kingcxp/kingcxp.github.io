@@ -23,8 +23,7 @@ author: Kingcq
 #include <stddef.h>
 #include <stdint.h>
 
-uint64_t hash_string(const char *text)
-{
+uint64_t hash_string(const char *text) {
     uint64_t hash = UINT64_C(14695981039346656037);
     while (*text != '\0') {
         hash ^= (unsigned char)*text++;
@@ -79,8 +78,7 @@ typedef struct {
 ```c
 #include <stdlib.h>
 
-int hash_table_init(HashTable *table, size_t bucket_count)
-{
+int hash_table_init(HashTable *table, size_t bucket_count) {
     if (bucket_count == 0) return 0;
 
     table->buckets = calloc(bucket_count, sizeof(table->buckets[0]));
@@ -101,8 +99,7 @@ int hash_table_init(HashTable *table, size_t bucket_count)
 ```c
 #include <string.h>
 
-char *duplicate_string(const char *text)
-{
+char *duplicate_string(const char *text) {
     size_t length = strlen(text);
     char *copy = malloc(length + 1);
     if (copy == NULL) return NULL;
@@ -116,8 +113,7 @@ char *duplicate_string(const char *text)
 ## 查找
 
 ```c
-HashNode *hash_table_find_node(HashTable *table, const char *key)
-{
+HashNode *hash_table_find_node(HashTable *table, const char *key) {
     size_t index = (size_t)(hash_string(key) % table->bucket_count);
 
     for (HashNode *node = table->buckets[index];
@@ -134,8 +130,7 @@ HashNode *hash_table_find_node(HashTable *table, const char *key)
 ## 插入或更新
 
 ```c
-int hash_table_set(HashTable *table, const char *key, int value)
-{
+int hash_table_set(HashTable *table, const char *key, int value) {
     HashNode *existing = hash_table_find_node(table, key);
     if (existing != NULL) {
         existing->value = value;
@@ -165,8 +160,7 @@ int hash_table_set(HashTable *table, const char *key, int value)
 二级指针可以统一删除桶首和中间节点：
 
 ```c
-int hash_table_remove(HashTable *table, const char *key)
-{
+int hash_table_remove(HashTable *table, const char *key) {
     size_t index = (size_t)(hash_string(key) % table->bucket_count);
     HashNode **link = &table->buckets[index];
 
@@ -200,8 +194,7 @@ load_factor = size / bucket_count
 ## 销毁
 
 ```c
-void hash_table_destroy(HashTable *table)
-{
+void hash_table_destroy(HashTable *table) {
     for (size_t i = 0; i < table->bucket_count; ++i) {
         HashNode *node = table->buckets[i];
         while (node != NULL) {

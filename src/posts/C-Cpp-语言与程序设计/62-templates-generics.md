@@ -22,13 +22,11 @@ author: Kingcq
 #include <string>
 
 template <typename T>
-T maximum(const T& a, const T& b)
-{
+T maximum(const T& a, const T& b) {
     return a < b ? b : a;
 }
 
-int main()
-{
+int main() {
     std::cout << maximum(3, 7) << '\n';
     std::cout << maximum(std::string("cat"), std::string("dog")) << '\n';
 }
@@ -57,8 +55,7 @@ maximum<double>(3, 4.5);
 
 ```cpp
 template <typename A, typename B>
-auto add(const A& a, const B& b) -> decltype(a + b)
-{
+auto add(const A& a, const B& b) -> decltype(a + b) {
     return a + b;
 }
 ```

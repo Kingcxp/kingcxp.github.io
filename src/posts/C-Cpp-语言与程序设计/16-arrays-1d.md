@@ -57,8 +57,7 @@ int c[] = {1, 2, 3, 4, 5};  // 编译器知道长度为 5
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int scores[5] = {85, 90, 78, 92, 88};
     printf("第 1 个学生的成绩：%d\n", scores[0]);
     printf("第 3 个学生的成绩：%d\n", scores[2]);
@@ -122,8 +121,7 @@ int a[5] = {1, 2, 3, 4, 5};
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int scores[5] = {85, 90, 78, 92, 88};
 
     for (int i = 0; i < 5; i++) {
@@ -151,8 +149,7 @@ scores[4] = 88
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int scores[5] = {85, 90, 78, 92, 88};
     int sum = 0;
 
@@ -172,8 +169,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int a[5] = {34, 12, 89, 5, 67};
     int max = a[0];
     int min = a[0];
@@ -200,8 +196,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int nums[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     int count = 0;
 
@@ -253,16 +248,6 @@ int zeros[100] = {0};   // 全部为 0
 ```
 
 这与完全没有初始化不同。普通自动数组 `int values[5];` 的元素是未确定值，读取前必须逐个赋值。
-
-## 变长数组需要谨慎
-
-C99 支持某些形式的 VLA：
-
-```c
-int data[n];
-```
-
-但后续标准允许实现不支持，MSVC 也长期不把它作为常规 C 特性；而且大尺寸 VLA 会直接消耗有限栈空间。<span style="color: #67C23A;">本教程在需要运行期大小时优先使用动态分配，并显式检查失败。</span>
 
 ## 小结与下一篇预告
 

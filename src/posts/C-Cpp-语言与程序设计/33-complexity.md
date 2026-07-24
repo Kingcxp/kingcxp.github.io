@@ -100,8 +100,7 @@ n -> n/2 -> n/4 -> ... -> 1
 空间复杂度描述额外需要多少存储。
 
 ```c
-void reverse(int *data, size_t n)
-{
+void reverse(int *data, size_t n) {
     for (size_t left = 0, right = n; left < right; ) {
         --right;
         int tmp = data[left];

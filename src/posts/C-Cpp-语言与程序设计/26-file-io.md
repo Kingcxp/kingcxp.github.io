@@ -30,8 +30,7 @@ FILE *file = fopen("scores.txt", "r");
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     FILE *file = fopen("message.txt", "w");
     if (file == NULL) {
         perror("无法打开 message.txt");
@@ -66,8 +65,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     FILE *file = fopen("scores.txt", "r");
     if (file == NULL) {
         perror("scores.txt");
@@ -130,8 +128,7 @@ if (fscanf(file, "%31s", name) == 1) {
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void)
-{
+int main(void) {
     int values[] = {10, 20, 30, 40};
     size_t count = sizeof(values) / sizeof(values[0]);
 
@@ -218,8 +215,7 @@ fflush(log);
 每次成功 `fopen` 都应有对应的 `fclose`。复杂函数可以统一跳到清理区：
 
 ```c
-int process_file(const char *path)
-{
+int process_file(const char *path) {
     int status = 1;
     FILE *file = fopen(path, "r");
     if (file == NULL) return status;

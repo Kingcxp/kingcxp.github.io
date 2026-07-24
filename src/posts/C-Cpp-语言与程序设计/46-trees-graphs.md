@@ -58,8 +58,7 @@ Carol -> 2
 任何来自文件或用户的编号都必须检查：
 
 ```c
-int valid_vertex(size_t vertex, size_t vertex_count)
-{
+int valid_vertex(size_t vertex, size_t vertex_count) {
     return vertex < vertex_count;
 }
 ```
@@ -125,8 +124,7 @@ typedef struct {
 int graph_add_directed_edge(Graph *graph,
                             size_t from,
                             size_t to,
-                            int weight)
-{
+                            int weight) {
     if (from >= graph->vertex_count || to >= graph->vertex_count) {
         return 0;
     }
@@ -179,8 +177,7 @@ typedef struct {
 - `graph_destroy` 必须释放每条链和数组。
 
 ```c
-void graph_destroy(Graph *graph)
-{
+void graph_destroy(Graph *graph) {
     if (graph == NULL) return;
 
     for (size_t i = 0; i < graph->vertex_count; ++i) {

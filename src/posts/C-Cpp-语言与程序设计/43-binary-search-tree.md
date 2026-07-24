@@ -24,8 +24,7 @@ author: Kingcq
 ## 查找
 
 ```c
-TreeNode *bst_find(TreeNode *root, int value)
-{
+TreeNode *bst_find(TreeNode *root, int value) {
     while (root != NULL) {
         if (value < root->value) {
             root = root->left;
@@ -46,8 +45,7 @@ TreeNode *bst_find(TreeNode *root, int value)
 使用二级指针可以统一处理“修改根”和“修改某个孩子指针”：
 
 ```c
-int bst_insert(TreeNode **root, int value)
-{
+int bst_insert(TreeNode **root, int value) {
     while (*root != NULL) {
         if (value < (*root)->value) {
             root = &(*root)->left;
@@ -86,8 +84,7 @@ int bst_insert(TreeNode **root, int value)
 ## 删除实现
 
 ```c
-int bst_remove(TreeNode **root, int value)
-{
+int bst_remove(TreeNode **root, int value) {
     while (*root != NULL && (*root)->value != value) {
         if (value < (*root)->value) {
             root = &(*root)->left;
@@ -137,8 +134,7 @@ int bst_remove(TreeNode **root, int value)
 
 bool bst_validate_range(const TreeNode *root,
                         long long low,
-                        long long high)
-{
+                        long long high) {
     if (root == NULL) return true;
     if (root->value <= low || root->value >= high) return false;
 
@@ -146,8 +142,7 @@ bool bst_validate_range(const TreeNode *root,
            bst_validate_range(root->right, root->value, high);
 }
 
-bool bst_validate(const TreeNode *root)
-{
+bool bst_validate(const TreeNode *root) {
     return bst_validate_range(root, LLONG_MIN, LLONG_MAX);
 }
 ```

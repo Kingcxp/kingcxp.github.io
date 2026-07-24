@@ -116,8 +116,7 @@ public:
     void speak() const override { std::cout << "喵喵\n"; }
 };
 
-int main()
-{
+int main() {
     Dog dog;
     Cat cat;
 
@@ -292,8 +291,7 @@ int main() {
 ## 多态需要通过引用或指针观察实际对象
 
 ```cpp
-void make_sound(const Animal& animal)
-{
+void make_sound(const Animal& animal) {
     animal.speak();
 }
 ```

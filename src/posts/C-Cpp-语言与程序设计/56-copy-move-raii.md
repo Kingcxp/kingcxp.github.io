@@ -127,8 +127,7 @@ private:
 
 ```cpp
 Buffer(Buffer&& other) noexcept
-    : data_(other.data_), size_(other.size_)
-{
+    : data_(other.data_), size_(other.size_) {
     other.data_ = nullptr;
     other.size_ = 0;
 }
@@ -176,8 +175,7 @@ public:
 ```cpp
 #include <memory>
 
-std::unique_ptr<Student> make_student()
-{
+std::unique_ptr<Student> make_student() {
     return std::make_unique<Student>();
 }
 ```

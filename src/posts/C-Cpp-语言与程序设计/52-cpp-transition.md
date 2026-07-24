@@ -60,13 +60,11 @@ ref = 20;  // 修改的就是 value
 引用必须在定义时绑定，通常不能改绑到另一个对象。函数参数使用引用可以避免复制，并表达是否允许修改：
 
 ```cpp
-void increment(int& value)
-{
+void increment(int& value) {
     value++;
 }
 
-void print_name(const std::string& name)
-{
+void print_name(const std::string& name) {
     std::cout << name << '\n';
 }
 ```
@@ -153,8 +151,7 @@ for (const std::string& name : names) {
 
 在 C 中，打开文件后必须记得沿每条路径关闭，分配内存后必须手动释放。<span style="color: #409EFF;">C++ 倾向于把资源放进对象，让析构函数自动清理：</span>
 
-```cpp
-{
+```cpp {
     std::vector<int> data(1000);
     // 使用 data
 } // 自动释放内部存储

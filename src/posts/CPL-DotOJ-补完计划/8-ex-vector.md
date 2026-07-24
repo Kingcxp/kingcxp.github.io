@@ -74,8 +74,7 @@ int capacity() {
 // 所以这里的容量和数组大小并不相同
 
 // 将容量扩充至 n，如果当前容量不够需要重新申请内存
-void reserve(int n)
-{
+void reserve(int n) {
     if (n > capacity())
     {
         int* tmp = malloc(n * sizeof(int));
@@ -111,8 +110,7 @@ void push_back(int val) {
     ++vec.end;
 }
 
-void pop_back()// 在数组尾部删除一个元素
-{
+void pop_back()// 在数组尾部删除一个元素 {
     if (size() > 0)
         --vec.end;
 }

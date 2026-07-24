@@ -96,15 +96,13 @@ private:
 ```cpp
 #include <algorithm>
 
-Task* TaskRepository::find(Task::Id id)
-{
+Task* TaskRepository::find(Task::Id id) {
     const auto it = std::find_if(tasks_.begin(), tasks_.end(),
         [id](const Task& task) { return task.id() == id; });
     return it == tasks_.end() ? nullptr : &*it;
 }
 
-bool TaskRepository::remove(Task::Id id)
-{
+bool TaskRepository::remove(Task::Id id) {
     const auto it = std::remove_if(tasks_.begin(), tasks_.end(),
         [id](const Task& task) { return task.id() == id; });
 
@@ -119,8 +117,7 @@ ID 唯一，因此最多删除一项。如果使用 `unordered_map<Id, Task>`，
 ## 展示与排序不应修改原数据
 
 ```cpp
-std::vector<const Task*> sorted_view(const TaskRepository& repository)
-{
+std::vector<const Task*> sorted_view(const TaskRepository& repository) {
     std::vector<const Task*> result;
     result.reserve(repository.all().size());
 
@@ -160,8 +157,7 @@ TASKS 1
 #include <fstream>
 #include <stdexcept>
 
-void save(const TaskRepository& repository, const std::string& path)
-{
+void save(const TaskRepository& repository, const std::string& path) {
     std::ofstream out(path);
     if (!out) throw std::runtime_error("cannot open output file: " + path);
 

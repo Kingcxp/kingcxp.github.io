@@ -98,8 +98,7 @@ WordEntry **entries = malloc(table.size * sizeof(entries[0]));
 按频率降序，同频时按字典序：
 
 ```c
-int compare_frequency(const void *left, const void *right)
-{
+int compare_frequency(const void *left, const void *right) {
     const WordEntry *a = *(const WordEntry *const *)left;
     const WordEntry *b = *(const WordEntry *const *)right;
 

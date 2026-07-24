@@ -26,8 +26,7 @@ typedef struct TreeNode {
     struct TreeNode *right;
 } TreeNode;
 
-TreeNode *tree_node_create(int value)
-{
+TreeNode *tree_node_create(int value) {
     TreeNode *node = malloc(sizeof(*node));
     if (node == NULL) return NULL;
 
@@ -78,8 +77,7 @@ root->left->right = tree_node_create(5);
 ```c
 #include <stdio.h>
 
-void preorder(const TreeNode *root)
-{
+void preorder(const TreeNode *root) {
     if (root == NULL) return;
     printf("%d ", root->value);
     preorder(root->left);
@@ -96,8 +94,7 @@ void preorder(const TreeNode *root)
 顺序：左、根、右。
 
 ```c
-void inorder(const TreeNode *root)
-{
+void inorder(const TreeNode *root) {
     if (root == NULL) return;
     inorder(root->left);
     printf("%d ", root->value);
@@ -112,8 +109,7 @@ void inorder(const TreeNode *root)
 顺序：左、右、根。
 
 ```c
-void postorder(const TreeNode *root)
-{
+void postorder(const TreeNode *root) {
     if (root == NULL) return;
     postorder(root->left);
     postorder(root->right);
@@ -126,8 +122,7 @@ void postorder(const TreeNode *root)
 ## 释放整棵树
 
 ```c
-void tree_destroy(TreeNode *root)
-{
+void tree_destroy(TreeNode *root) {
     if (root == NULL) return;
     tree_destroy(root->left);
     tree_destroy(root->right);
@@ -142,14 +137,12 @@ void tree_destroy(TreeNode *root)
 ```c
 #include <stddef.h>
 
-size_t tree_size(const TreeNode *root)
-{
+size_t tree_size(const TreeNode *root) {
     if (root == NULL) return 0;
     return 1 + tree_size(root->left) + tree_size(root->right);
 }
 
-int tree_height(const TreeNode *root)
-{
+int tree_height(const TreeNode *root) {
     if (root == NULL) return -1; // 约定空树高度为 -1
 
     int left = tree_height(root->left);

@@ -71,15 +71,13 @@ typedef struct {
 新元素先放在末尾，然后不断与父节点比较：
 
 ```c
-static void heap_swap(int *a, int *b)
-{
+static void heap_swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-void sift_up(int data[], size_t index)
-{
+void sift_up(int data[], size_t index) {
     while (index > 0) {
         size_t parent = (index - 1) / 2;
         if (data[parent] >= data[index]) break;
@@ -97,8 +95,7 @@ void sift_up(int data[], size_t index)
 删除最大值时，用末尾元素填到根，再向下恢复堆性质：
 
 ```c
-void sift_down(int data[], size_t size, size_t index)
-{
+void sift_down(int data[], size_t size, size_t index) {
     for (;;) {
         size_t largest = index;
         size_t left = index * 2 + 1;
@@ -119,8 +116,7 @@ void sift_down(int data[], size_t size, size_t index)
 ## 入队与出队
 
 ```c
-int heap_push(MaxHeap *heap, int value)
-{
+int heap_push(MaxHeap *heap, int value) {
     if (heap->size == heap->capacity) {
         size_t next = heap->capacity == 0 ? 8 : heap->capacity * 2;
         if (next < heap->capacity || !heap_reserve(heap, next)) return 0;
@@ -132,8 +128,7 @@ int heap_push(MaxHeap *heap, int value)
     return 1;
 }
 
-int heap_pop(MaxHeap *heap, int *result)
-{
+int heap_pop(MaxHeap *heap, int *result) {
     if (heap->size == 0) return 0;
 
     *result = heap->data[0];
@@ -153,8 +148,7 @@ int heap_pop(MaxHeap *heap, int *result)
 逐个插入是 `O(n log n)`。更好的建堆方法是从最后一个非叶节点开始依次下沉：
 
 ```c
-void heapify(int data[], size_t size)
-{
+void heapify(int data[], size_t size) {
     for (size_t i = size / 2; i > 0; --i) {
         sift_down(data, size, i - 1);
     }
@@ -171,8 +165,7 @@ void heapify(int data[], size_t size)
 4. 重复直到只剩一个元素。
 
 ```c
-void heap_sort(int data[], size_t size)
-{
+void heap_sort(int data[], size_t size) {
     heapify(data, size);
 
     for (size_t end = size; end > 1; --end) {

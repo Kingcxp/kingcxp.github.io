@@ -39,7 +39,7 @@ void permutations(int now) {
     }
     for (int i = 1; i <= n; ++i) {
         // 如果这个数字没有被用过
-        if (!vis[i]){
+        if (!vis[i]) {
             // 标记为用过
             vis[i] = true;
             // 搜索下一位

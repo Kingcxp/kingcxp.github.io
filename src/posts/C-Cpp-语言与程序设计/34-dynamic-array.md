@@ -46,15 +46,13 @@ capacity == 0 时 data 可以为 NULL
 ```c
 #include <stdlib.h>
 
-void vector_init(IntVector *vector)
-{
+void vector_init(IntVector *vector) {
     vector->data = NULL;
     vector->size = 0;
     vector->capacity = 0;
 }
 
-void vector_destroy(IntVector *vector)
-{
+void vector_destroy(IntVector *vector) {
     free(vector->data);
     vector_init(vector);
 }
@@ -65,8 +63,7 @@ void vector_destroy(IntVector *vector)
 ```c
 #include <stdint.h>
 
-int vector_reserve(IntVector *vector, size_t new_capacity)
-{
+int vector_reserve(IntVector *vector, size_t new_capacity) {
     if (new_capacity <= vector->capacity) return 1;
     if (new_capacity > SIZE_MAX / sizeof(vector->data[0])) return 0;
 
@@ -87,8 +84,7 @@ int vector_reserve(IntVector *vector, size_t new_capacity)
 ## 尾部插入
 
 ```c
-int vector_push_back(IntVector *vector, int value)
-{
+int vector_push_back(IntVector *vector, int value) {
     if (vector->size == vector->capacity) {
         size_t new_capacity = vector->capacity == 0
             ? 8
@@ -120,8 +116,7 @@ int vector_push_back(IntVector *vector, int value)
 ## 下标访问
 
 ```c
-int *vector_at(IntVector *vector, size_t index)
-{
+int *vector_at(IntVector *vector, size_t index) {
     if (index >= vector->size) return NULL;
     return &vector->data[index];
 }
@@ -141,8 +136,7 @@ if (item != NULL) *item = 42;
 ```c
 #include <string.h>
 
-int vector_insert(IntVector *vector, size_t index, int value)
-{
+int vector_insert(IntVector *vector, size_t index, int value) {
     if (index > vector->size) return 0;
     if (!vector_push_back(vector, 0)) return 0;
 
@@ -153,8 +147,7 @@ int vector_insert(IntVector *vector, size_t index, int value)
     return 1;
 }
 
-int vector_erase(IntVector *vector, size_t index)
-{
+int vector_erase(IntVector *vector, size_t index) {
     if (index >= vector->size) return 0;
 
     memmove(&vector->data[index],

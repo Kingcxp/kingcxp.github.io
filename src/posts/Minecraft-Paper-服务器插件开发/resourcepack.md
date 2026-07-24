@@ -81,8 +81,7 @@ my_resource_pack/
 ```
 
 ### 2. pack.mcmeta (身份证)
-```json
-{
+```json {
   "pack": {
     "description": "This is a description for resource pack",
     "pack_format": 9999,
@@ -95,8 +94,7 @@ my_resource_pack/
 
 ### 3. 模型映射 JSON (flame_wand.json)
 这是最关键的一步，它将代码中的“暗号”指向实际的模型文件。
-```json
-{
+```json {
     "model": {
         "type": "composite",
         "models": [

@@ -57,8 +57,7 @@ size_t count = 0;
 #include <stdio.h>
 #include <stdlib.h>
 
-int read_int(const char *prompt, int *result)
-{
+int read_int(const char *prompt, int *result) {
     char line[128];
     char *end = NULL;
 
@@ -91,8 +90,7 @@ int read_int(const char *prompt, int *result)
 ```c
 #include <stddef.h>
 
-int add_score(int scores[], size_t *count, size_t capacity, int score)
-{
+int add_score(int scores[], size_t *count, size_t capacity, int score) {
     if (score < 0 || score > 100) return 0;
     if (*count >= capacity) return 0;
 
@@ -109,8 +107,7 @@ int add_score(int scores[], size_t *count, size_t capacity, int score)
 ```c
 #include <stddef.h>
 
-int minimum(const int scores[], size_t count)
-{
+int minimum(const int scores[], size_t count) {
     int result = scores[0];
     for (size_t i = 1; i < count; ++i) {
         if (scores[i] < result) result = scores[i];
@@ -118,8 +115,7 @@ int minimum(const int scores[], size_t count)
     return result;
 }
 
-int maximum(const int scores[], size_t count)
-{
+int maximum(const int scores[], size_t count) {
     int result = scores[0];
     for (size_t i = 1; i < count; ++i) {
         if (scores[i] > result) result = scores[i];
@@ -127,8 +123,7 @@ int maximum(const int scores[], size_t count)
     return result;
 }
 
-double average(const int scores[], size_t count)
-{
+double average(const int scores[], size_t count) {
     long long sum = 0;
     for (size_t i = 0; i < count; ++i) sum += scores[i];
     return (double)sum / (double)count;
@@ -140,8 +135,7 @@ double average(const int scores[], size_t count)
 ## 分布统计
 
 ```c
-void build_histogram(const int scores[], size_t count, size_t bins[5])
-{
+void build_histogram(const int scores[], size_t count, size_t bins[5]) {
     for (size_t i = 0; i < 5; ++i) bins[i] = 0;
 
     for (size_t i = 0; i < count; ++i) {
@@ -173,8 +167,7 @@ int minimum(const int scores[], size_t count);
 int maximum(const int scores[], size_t count);
 double average(const int scores[], size_t count);
 
-void print_menu(void)
-{
+void print_menu(void) {
     puts("\n1. 添加成绩");
     puts("2. 显示统计");
     puts("3. 查找成绩");
@@ -182,8 +175,7 @@ void print_menu(void)
     puts("0. 退出");
 }
 
-int main(void)
-{
+int main() {
     int scores[100];
     size_t count = 0;
 

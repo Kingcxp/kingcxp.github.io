@@ -62,16 +62,14 @@ typedef struct {
 ```c
 #include <stdlib.h>
 
-void address_book_init(AddressBook *book)
-{
+void address_book_init(AddressBook *book) {
     book->items = NULL;
     book->size = 0;
     book->capacity = 0;
     book->next_id = 1;
 }
 
-void address_book_destroy(AddressBook *book)
-{
+void address_book_destroy(AddressBook *book) {
     free(book->items);
     address_book_init(book);
 }
@@ -84,8 +82,7 @@ void address_book_destroy(AddressBook *book)
 ```c
 #include <stdint.h>
 
-int address_book_reserve(AddressBook *book, size_t new_capacity)
-{
+int address_book_reserve(AddressBook *book, size_t new_capacity) {
     if (new_capacity <= book->capacity) return 1;
     if (new_capacity > SIZE_MAX / sizeof(book->items[0])) return 0;
 
@@ -110,8 +107,7 @@ int address_book_reserve(AddressBook *book, size_t new_capacity)
 ```c
 #include <string.h>
 
-int copy_text(char *dest, size_t capacity, const char *src)
-{
+int copy_text(char *dest, size_t capacity, const char *src) {
     size_t length = strlen(src);
     if (length >= capacity) return 0;
     memcpy(dest, src, length + 1);
@@ -127,8 +123,7 @@ int copy_text(char *dest, size_t capacity, const char *src)
 int address_book_add(AddressBook *book,
                      const char *name,
                      const char *phone,
-                     const char *email)
-{
+                     const char *email) {
     if (book->size == book->capacity) {
         size_t next = book->capacity == 0 ? 8 : book->capacity * 2;
         if (next < book->capacity || !address_book_reserve(book, next)) {
@@ -157,8 +152,7 @@ int address_book_add(AddressBook *book,
 ```c
 #include <string.h>
 
-Contact *address_book_find_name(AddressBook *book, const char *name)
-{
+Contact *address_book_find_name(AddressBook *book, const char *name) {
     for (size_t i = 0; i < book->size; ++i) {
         if (strcmp(book->items[i].name, name) == 0) {
             return &book->items[i];
@@ -167,8 +161,7 @@ Contact *address_book_find_name(AddressBook *book, const char *name)
     return NULL;
 }
 
-int address_book_remove_id(AddressBook *book, unsigned long id)
-{
+int address_book_remove_id(AddressBook *book, unsigned long id) {
     for (size_t i = 0; i < book->size; ++i) {
         if (book->items[i].id == id) {
             book->items[i] = book->items[book->size - 1];
@@ -198,8 +191,7 @@ int address_book_remove_id(AddressBook *book, unsigned long id)
 ```c
 #include <stdio.h>
 
-int address_book_save(const AddressBook *book, const char *path)
-{
+int address_book_save(const AddressBook *book, const char *path) {
     FILE *file = fopen(path, "w");
     if (file == NULL) return 0;
 

@@ -47,8 +47,7 @@ author: Kingcq
 ```c
 #include <stdio.h>
 
-void bubble_sort(int a[], int n)
-{
+void bubble_sort(int a[], int n) {
     int i, j, tmp;
     for (i = 0; i < n - 1; i++) {        // 需要 n-1 轮
         for (j = 0; j < n - 1 - i; j++) { // 每轮比较的范围逐渐缩小
@@ -61,8 +60,7 @@ void bubble_sort(int a[], int n)
     }
 }
 
-int main(void)
-{
+int main(void) {
     int a[] = {5, 3, 8, 4, 2};
     int n = sizeof(a) / sizeof(a[0]);
     int i;
@@ -89,8 +87,7 @@ int main(void)
 如果某一轮完全没有发生交换，说明数组已经有序了，后面不用再排。可以加入一个标志位提前结束：
 
 ```c
-void bubble_sort_optimized(int a[], int n)
-{
+void bubble_sort_optimized(int a[], int n) {
     int i, j, tmp;
     int swapped;
     for (i = 0; i < n - 1; i++) {
@@ -121,8 +118,7 @@ void bubble_sort_optimized(int a[], int n)
 ```c
 #include <stdio.h>
 
-void selection_sort(int a[], int n)
-{
+void selection_sort(int a[], int n) {
     int i, j, min_idx, tmp;
     for (i = 0; i < n - 1; i++) {
         min_idx = i;                      // 假设当前位置最小
@@ -140,8 +136,7 @@ void selection_sort(int a[], int n)
     }
 }
 
-int main(void)
-{
+int main(void) {
     int a[] = {5, 3, 8, 4, 2};
     int n = sizeof(a) / sizeof(a[0]);
     int i;
@@ -176,8 +171,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-void insertion_sort(int a[], int n)
-{
+void insertion_sort(int a[], int n) {
     int i, j, key;
     for (i = 1; i < n; i++) {      // 从第二个元素开始插入
         key = a[i];                 // 当前要插入的牌
@@ -191,8 +185,7 @@ void insertion_sort(int a[], int n)
     }
 }
 
-int main(void)
-{
+int main(void) {
     int a[] = {5, 3, 8, 4, 2};
     int n = sizeof(a) / sizeof(a[0]);
     int i;
@@ -268,8 +261,7 @@ int main(void)
 C 标准库提供 `qsort`：
 
 ```c
-int compare_int(const void *left, const void *right)
-{
+int compare_int(const void *left, const void *right) {
     int a = *(const int *)left;
     int b = *(const int *)right;
     return (a > b) - (a < b);

@@ -140,8 +140,7 @@ print_animal(dog);
 把派生对象按值转换成基类对象时，只复制基类子对象，派生部分被切掉。<span style="color: #409EFF;">运行时多态接口应使用基类引用或指针：</span>
 
 ```cpp
-void print_animal(const Animal& animal)
-{
+void print_animal(const Animal& animal) {
     animal.speak();
 }
 ```

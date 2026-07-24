@@ -336,8 +336,7 @@ if (fabs(a - b) < 1e-9) {
 ## 守卫式返回减少嵌套
 
 ```c
-int process(const int *data, size_t n)
-{
+int process(const int *data, size_t n) {
     if (data == NULL) return -1;
     if (n == 0) return 0;
 

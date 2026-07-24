@@ -25,15 +25,13 @@ author: Kingcq
 ```c
 #include <stdio.h>
 
-void swap(int a, int b)
-{
+void swap(int a, int b) {
     int tmp = a;
     a = b;
     b = tmp;
 }
 
-int main(void)
-{
+int main() {
     int x = 3, y = 5;
     swap(x, y);
     printf("x = %d, y = %d\n", x, y);
@@ -63,14 +61,12 @@ x = 3, y = 5
 ```c
 #include <stdio.h>
 
-void change(int a)
-{
+void change(int a) {
     a = 100;
     printf("函数内部 a = %d\n", a);
 }
 
-int main(void)
-{
+int main() {
     int x = 1;
     change(x);
     printf("函数外部 x = %d\n", x);
@@ -94,14 +90,12 @@ int main(void)
 ```c
 #include <stdio.h>
 
-void foo(void)
-{
+void foo(void) {
     int local = 10;
     printf("local = %d\n", local);
 }
 
-int main(void)
-{
+int main() {
     foo();
     // printf("%d\n", local);  // 错误！main 里访问不到 foo 里的 local
     return 0;
@@ -119,13 +113,11 @@ int main(void)
 
 int count = 0;  // 全局变量
 
-void add_one(void)
-{
+void add_one(void) {
     count = count + 1;
 }
 
-int main(void)
-{
+int main() {
     add_one();
     add_one();
     printf("count = %d\n", count);
@@ -157,15 +149,13 @@ count = 2
 ```c
 #include <stdio.h>
 
-void counter(void)
-{
+void counter(void) {
     static int n = 0;  // 只初始化一次
     n = n + 1;
     printf("第 %d 次调用\n", n);
 }
 
-int main(void)
-{
+int main() {
     counter();
     counter();
     counter();
@@ -209,14 +199,12 @@ void func() {
 
 int value = 100;
 
-void test(void)
-{
+void test(void) {
     int value = 10;
     printf("函数内部 value = %d\n", value);
 }
 
-int main(void)
-{
+int main() {
     test();
     printf("函数外部 value = %d\n", value);
     return 0;
@@ -239,49 +227,40 @@ int main(void)
 3. <span style="color: #F56C6C;">局部变量未初始化就使用</span>：局部变量不会自动清零，里面可能是随机值。
 4. <span style="color: #F56C6C;">`static` 理解错</span>：它不是“常量”，只是生命周期延长了，值仍然可以被修改。
 
-## 作用域、链接和存储期是三条轴
-
-- <span style="color: #409EFF;">作用域</span>：名字在源代码哪里可见；
-- <span style="color: #409EFF;">链接</span>：不同翻译单元中的同名声明是否指向同一实体；
-- <span style="color: #E6A23C;">存储期</span>：对象存储存在多久。
-
-文件作用域的 `static` 函数或变量具有内部链接，只在当前翻译单元中可见：
-
-```c
-static int helper(int value)
-{
-    return value * 2;
-}
-```
-
-这有助于缩小模块公开接口。普通全局定义通常具有外部链接，应谨慎暴露。
-
-## 指针参数也仍是按值传递
-
-```c
-void set_zero(int *p)
-{
-    *p = 0;  // 修改 p 指向的对象
-    p = NULL; // 只修改本地指针副本
-}
-```
-
-C 没有“按引用传递”这一独立参数机制。传入地址后，函数通过指针间接修改调用者对象；指针这个参数本身仍被复制。
-
-## 用 `const` 表达只读借用
-
-```c
-int sum(const int *data, size_t length);
-```
-
-`const int *` 表示函数承诺不通过该指针修改元素。它不自动保证调用期间没有其他别名修改，也不延长对象生命周期，但能让接口意图更清楚并获得编译器检查。
-
 ## 局部优先于全局
 
-全局变量会让函数的真实输入隐藏在参数列表之外，使调用顺序、测试和并发都更复杂。状态确实需要跨函数共享时，优先把它放进结构体并显式传入上下文指针。
+写函数时有一个简单的原则：<span style="color: #409EFF;">能用参数传递的就不要用全局变量</span>。
 
-## 小结与下一篇预告
+全局变量虽然用起来方便，但是会造成一个问题——你在代码的任何一个地方都可能修改它，很难追踪是谁改了它、什么时候改的。这会给你排查 bug 增加很多麻烦。
 
-<span style="color: #E6A23C;">今天我们聊了形参和实参的区别、C 语言的值传递机制、局部变量与全局变量的作用域和生命周期，以及 `static` 局部变量的妙用。</span>理解这些之后，你就能更清楚地知道函数调用时到底发生了什么。
+如果一段逻辑需要被多个函数共享，优先通过参数把数据传给它们，而不是把数据放在全局变量里。这样做的好处是：
 
-下一篇先把函数放进真正的多文件项目中，学习预处理、头文件、翻译单元和链接。之后再进入数组。
+1. **函数之间的依赖更加明确**——看一眼参数列表就知道这个函数需要什么数据。
+2. **容易复用**——同样的函数可以用不同的数据调用多次。
+3. **容易调试**——如果结果出错了，可以更快地定位到具体是哪个环节的问题。
+
+```c
+// ❌ 不推荐：用全局变量传递数据
+int value;
+
+void add_one(void) {
+    value = value + 1;
+}
+
+void print_value(void) {
+    printf("%d\n", value);
+}
+
+// ✅ 推荐：通过参数和返回值传递
+int add_one(int v) {
+    return v + 1;
+}
+
+void print_value(int v) {
+    printf("%d\n", v);
+}
+```
+
+:::tip 关于指针和结构体
+你可能会在项目里看到用指针间接修改函数外部的变量，或者把多个相关的变量放到结构体里一起传递。这些内容我们会分别在指针章节和结构体章节中详细讲解，这里先记住“能用参数传的尽量参数传”这个原则就行。
+:::

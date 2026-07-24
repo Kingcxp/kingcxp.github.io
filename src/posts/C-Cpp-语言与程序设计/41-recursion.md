@@ -76,16 +76,14 @@ n! = n × (n-1)!
 ```c
 #include <stdio.h>
 
-long long factorial(int n)
-{
+long long factorial(int n) {
     if (n == 0) {          // 终止条件
         return 1;
     }
     return n * factorial(n - 1);  // 递归关系，n 越来越小
 }
 
-int main(void)
-{
+int main(void) {
     int n = 5;
     printf("%d! = %lld\n", n, factorial(n));
     return 0;
@@ -155,15 +153,13 @@ F(n) = F(n-1) + F(n-2)  (n ≥ 2)
 ```c
 #include <stdio.h>
 
-long long fibonacci(int n)
-{
+long long fibonacci(int n) {
     if (n == 0) return 0;  // 终止条件 1
     if (n == 1) return 1;  // 终止条件 2
     return fibonacci(n - 1) + fibonacci(n - 2);  // 递归关系
 }
 
-int main(void)
-{
+int main(void) {
     int n = 10;
     printf("F(%d) = %lld\n", n, fibonacci(n));
     return 0;
@@ -194,8 +190,7 @@ F(10) = 55
 很多能用递归解决的问题也能用循环解决。比如阶乘用循环写：
 
 ```c
-long long factorial_loop(int n)
-{
+long long factorial_loop(int n) {
     long long result = 1;
     int i;
     for (i = 1; i <= n; i++) {
@@ -213,14 +208,12 @@ long long factorial_loop(int n)
 
 ```c
 // 危险示例：递归太深会导致栈溢出
-void danger(int n)
-{
+void danger(int n) {
     if (n == 0) return;
     danger(n - 1);
 }
 
-int main(void)
-{
+int main(void) {
     danger(1000000);  // 层数太大，可能崩溃
     return 0;
 }

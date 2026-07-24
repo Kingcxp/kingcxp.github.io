@@ -331,13 +331,13 @@ g++ hello.cpp -o hello
 gcc hello.c -o my_program.exe
 
 # 开启所有警告（-Wall）
-gcc hello.c -std=c17 -Wall -Wextra -Wpedantic -o hello
+gcc hello.c -std=c11 -Wall -Wextra -Wpedantic -o hello
 
 # 开启调试信息（-g），后面调试程序时会用到
 gcc hello.c -g -o hello
 
 # 指定 C 语言标准（-std）
-gcc hello.c -std=c17 -o hello
+gcc hello.c -std=c11 -o hello
 
 # 优化等级（-O2 是常用优化级别）
 gcc hello.c -O2 -o hello
@@ -372,7 +372,7 @@ gcc hello.c -O2 -o hello
 
 ```bash
 # C
-gcc hello.c -std=c17 -Wall -Wextra -Wpedantic -g -o hello
+gcc hello.c -std=c11 -Wall -Wextra -Wpedantic -g -o hello
 
 # C++
 g++ hello.cpp -std=c++17 -Wall -Wextra -Wpedantic -g -o hello
@@ -398,6 +398,6 @@ g++ hello.cpp -std=c++17 -Wall -Wextra -Wpedantic -g -o hello
 - `macOS` / `Linux` 推荐 `Homebrew` 安装 `GCC` / `LLVM`
 - 编辑器推荐 `VSCode` + `C/C++` 插件，或 `Zed`（macOS/Linux）
 - 编译命令：`gcc 源文件.c -o 输出文件`，运行 `./输出文件`
-- 学习阶段推荐：`-std=c17 -Wall -Wextra -Wpedantic -g`。先看懂警告，再考虑 `-O2` 优化
+- 学习阶段推荐：`-std=c11 -Wall -Wextra -Wpedantic -g`。先看懂警告，再考虑 `-O2` 优化
 
 下一篇我们将回到计算机底层，看看汇编语言是怎么一步步演变成 `C` 语言的。

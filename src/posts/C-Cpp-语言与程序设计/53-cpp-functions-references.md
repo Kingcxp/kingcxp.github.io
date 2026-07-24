@@ -23,18 +23,15 @@ C++ 延续了 C 的函数模型，但增加了重载、默认参数、引用和�
 #include <iostream>
 #include <string>
 
-void print(int value)
-{
+void print(int value) {
     std::cout << "int: " << value << '\n';
 }
 
-void print(double value)
-{
+void print(double value) {
     std::cout << "double: " << value << '\n';
 }
 
-void print(const std::string& value)
-{
+void print(const std::string& value) {
     std::cout << "string: " << value << '\n';
 }
 ```
@@ -172,8 +169,7 @@ std::string target = std::move(source);
 ## 返回值通常直接按值
 
 ```cpp
-std::vector<int> make_sequence(int count)
-{
+std::vector<int> make_sequence(int count) {
     std::vector<int> result;
     for (int i = 0; i < count; ++i) result.push_back(i);
     return result;
@@ -209,8 +205,7 @@ const std::string& name() const noexcept;
 ## 悬空引用示例
 
 ```cpp
-const std::string& bad_name()
-{
+const std::string& bad_name() {
     std::string local = "Alice";
     return local; // 错误：函数结束后 local 被销毁
 }

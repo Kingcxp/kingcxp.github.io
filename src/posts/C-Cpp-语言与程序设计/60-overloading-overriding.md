@@ -44,8 +44,7 @@ public:
 通过基类引用调用时，会根据对象真实类型选择：
 
 ```cpp
-void paint(const Shape& shape)
-{
+void paint(const Shape& shape) {
     shape.draw();
 }
 ```

@@ -31,9 +31,9 @@ gcc main.c math_utils.c -o app
 4. <span style="color: #409EFF;">链接</span>：把目标文件和库中的符号连接成可执行文件。
 
 ```text
-main.c ──预处理/编译/汇编──> main.o ┐
-                                      ├─链接─> app
-math_utils.c ───────────────> utils.o ┘
+main.c ──预处理/编译/汇编──>  main.o ┐
+                                         ├─链接─> app
+math_utils.c ─────────> utils.o ┘
 ```
 
 每个 `.c` 文件连同它包含的头文件形成一个<span style="color: #409EFF;">翻译单元</span>。编译器通常分别检查它们，链接器最后才处理跨文件引用。
@@ -47,8 +47,7 @@ math_utils.c ───────────────> utils.o ┘
 int add(int a, int b);
 
 // 定义
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 ```
@@ -72,13 +71,11 @@ int clamp(int value, int min_value, int max_value);
 ```c
 #include "math_utils.h"
 
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 
-int clamp(int value, int min_value, int max_value)
-{
+int clamp(int value, int min_value, int max_value) {
     if (value < min_value) return min_value;
     if (value > max_value) return max_value;
     return value;
@@ -91,8 +88,7 @@ int clamp(int value, int min_value, int max_value)
 #include <stdio.h>
 #include "math_utils.h"
 
-int main(void)
-{
+int main() {
     printf("%d\n", clamp(add(3, 9), 0, 10));
     return 0;
 }
@@ -101,7 +97,7 @@ int main(void)
 编译：
 
 ```bash
-gcc main.c math_utils.c -std=c17 -Wall -Wextra -Wpedantic -o app
+gcc main.c math_utils.c -std=c11 -Wall -Wextra -Wpedantic -o app
 ```
 
 把自己的头文件也包含进对应的 `.c` 文件，可以让编译器检查“头文件里的声明”和“实际定义”是否一致。
@@ -151,8 +147,7 @@ int result = SQUARE(i++);  // i 可能被递增两次，行为复杂且危险
 宏参数和整个表达式都要加括号，但括号仍不能解决“参数被求值多次”。能用函数时，优先用函数；C99 以后，小型性能敏感函数还可以考虑 `static inline`。
 
 ```c
-static inline int square_int(int x)
-{
+static inline int square_int(int x) {
     return x * x;
 }
 ```

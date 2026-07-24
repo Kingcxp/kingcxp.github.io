@@ -40,8 +40,7 @@ author: Kingcq
 ```c
 #include <stdio.h>
 
-int sequential_search(int a[], int n, int target)
-{
+int sequential_search(int a[], int n, int target) {
     int i;
     for (i = 0; i < n; i++) {
         if (a[i] == target) {
@@ -51,8 +50,7 @@ int sequential_search(int a[], int n, int target)
     return -1;  // 没找到
 }
 
-int main(void)
-{
+int main(void) {
     int a[] = {3, 7, 1, 9, 5};
     int n = sizeof(a) / sizeof(a[0]);
     int target = 9;
@@ -116,8 +114,7 @@ graph TD
 ```c
 #include <stdio.h>
 
-int binary_search(int a[], int n, int target)
-{
+int binary_search(int a[], int n, int target) {
     int left = 0;
     int right = n - 1;
     int mid;
@@ -137,8 +134,7 @@ int binary_search(int a[], int n, int target)
     return -1;  // 没找到
 }
 
-int main(void)
-{
+int main(void) {
     int a[] = {1, 3, 5, 7, 9, 11, 13, 15};
     int n = sizeof(a) / sizeof(a[0]);
     int target = 7;

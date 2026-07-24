@@ -50,8 +50,7 @@ int a[2][3] = {1, 2, 3, 4, 5, 6};
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int a[2][3] = {
         {1, 2, 3},
         {4, 5, 6}
@@ -76,18 +75,6 @@ a[1][2] = 6
 
 对于 `int a[2][3]`，内存中的顺序是：
 
-```mermaid
-graph LR
-    subgraph 二维数组 a[2][3] 在内存中的行优先布局
-        A0[a[0][0]<br/>1] --> A1[a[0][1]<br/>2]
-        A1 --> A2[a[0][2]<br/>3]
-        A2 --> A3[a[1][0]<br/>4]
-        A3 --> A4[a[1][1]<br/>5]
-        A4 --> A5[a[1][2]<br/>6]
-    end
-```
-
-
 ```text
 a[0][0], a[0][1], a[0][2], a[1][0], a[1][1], a[1][2]
 ```
@@ -101,8 +88,7 @@ a[0][0], a[0][1], a[0][2], a[1][0], a[1][1], a[1][2]
 ```c
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
     int a[2][3] = {
         {1, 2, 3},
         {4, 5, 6}
@@ -133,8 +119,7 @@ int main(void)
 ```c
 #include <stdio.h>
 
-void print_matrix(int rows, int cols, int a[][3])
-{
+void print_matrix(int rows, int cols, int a[][3]) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             printf("%d ", a[i][j]);
@@ -143,8 +128,7 @@ void print_matrix(int rows, int cols, int a[][3])
     }
 }
 
-int main(void)
-{
+int main(void) {
     int a[2][3] = {
         {1, 2, 3},
         {4, 5, 6}
@@ -206,8 +190,6 @@ C99 还可以把列数写成先出现的参数：
 ```c
 void print_matrix(size_t rows, size_t cols, int matrix[rows][cols]);
 ```
-
-是否使用 VLA 参数取决于工具链兼容性。
 
 ## 动态二维数据有两种常见布局
 

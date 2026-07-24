@@ -88,8 +88,7 @@ int qx[MAXN * MAXN];
 int qy[MAXN * MAXN];
 int head = 0, tail = 0;
 
-void bfs_maze(int sx, int sy)
-{
+void bfs_maze(int sx, int sy) {
     qx[tail] = sx;
     qy[tail] = sy;
     tail++;
@@ -118,8 +117,7 @@ void bfs_maze(int sx, int sy)
     }
 }
 
-int main(void)
-{
+int main(void) {
     bfs_maze(0, 0);
 
     if (visited[n - 1][m - 1]) {
@@ -157,16 +155,14 @@ struct Node {
     struct Node *right;
 };
 
-struct Node *new_node(int val)
-{
+struct Node *new_node(int val) {
     struct Node *node = malloc(sizeof(struct Node));
     node->val = val;
     node->left = node->right = NULL;
     return node;
 }
 
-int main(void)
-{
+int main(void) {
     // 构造一棵简单二叉树
     struct Node *root = new_node(1);
     root->left = new_node(2);
@@ -197,7 +193,7 @@ int main(void)
 输出：
 
 ```text
-1 2 3 4 5 6 
+1 2 3 4 5 6
 ```
 
 这就是按层遍历：先第一层，再第二层，再第三层。

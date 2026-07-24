@@ -59,8 +59,7 @@ DFS 从一个起点出发，尽可能往深处探索；当当前路径无法继�
 DFS 最常见的实现方式就是递归。伪代码模板如下：
 
 ```c
-void dfs(当前状态)
-{
+void dfs(当前状态) {
     if (到达终止条件) {
         记录结果或返回;
         return;
@@ -110,8 +109,7 @@ int visited[5][5] = {0};
 int dx[] = {-1, 1, 0, 0};
 int dy[] = {0, 0, -1, 1};
 
-int dfs_maze(int x, int y)
-{
+int dfs_maze(int x, int y) {
     if (x < 0 || x >= n || y < 0 || y >= m) return 0;  // 越界
     if (maze[x][y] == 1 || visited[x][y]) return 0;    // 墙或已访问
     if (x == n - 1 && y == m - 1) return 1;            // 到达终点
@@ -130,8 +128,7 @@ int dfs_maze(int x, int y)
     return 0;
 }
 
-int main(void)
-{
+int main(void) {
     if (dfs_maze(0, 0)) {
         printf("可以到达出口\n");
     } else {
@@ -164,8 +161,7 @@ int n = 3;
 int path[10];       // 当前排列
 int used[10] = {0}; // used[i] 表示数字 i 是否已经使用
 
-void dfs_permutation(int depth)
-{
+void dfs_permutation(int depth) {
     if (depth == n) {
         int i;
         for (i = 0; i < n; i++) {
@@ -186,8 +182,7 @@ void dfs_permutation(int depth)
     }
 }
 
-int main(void)
-{
+int main(void) {
     dfs_permutation(0);
     return 0;
 }
@@ -196,12 +191,12 @@ int main(void)
 输出：
 
 ```text
-1 2 3 
-1 3 2 
-2 1 3 
-2 3 1 
-3 1 2 
-3 2 1 
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
 ```
 
 这里的关键是 `used[i] = 0` 这一步。每次递归返回后，要把当前选择撤销，让其他分支也能使用这个数字。
@@ -219,8 +214,7 @@ int n = 3;
 int nums[] = {1, 2, 3};
 int chosen[10];
 
-void dfs_subset(int index, int count)
-{
+void dfs_subset(int index, int count) {
     if (index == n) {
         printf("{");
         int i;
@@ -239,8 +233,7 @@ void dfs_subset(int index, int count)
     dfs_subset(index + 1, count + 1);
 }
 
-int main(void)
-{
+int main(void) {
     dfs_subset(0, 0);
     return 0;
 }
@@ -248,15 +241,7 @@ int main(void)
 
 输出：
 
-```text
-{}
-{3 }
-{2 }
-{2 3 }
-{1 }
-{1 3 }
-{1 2 }
-{1 2 3 }
+```text {} {3 } {2 } {2 3 } {1 } {1 3 } {1 2 } {1 2 3 }
 ```
 
 ## 时间复杂度与空间复杂度分析
@@ -292,8 +277,7 @@ DFS 的空间主要由两部分组成：
 ## 图 DFS 通常在进入节点时标记
 
 ```c
-void dfs(int node)
-{
+void dfs(int node) {
     visited[node] = true;
     for (每个 next) {
         if (!visited[next]) dfs(next);

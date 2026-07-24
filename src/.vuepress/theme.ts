@@ -26,7 +26,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "哎呀我去，太好看了~",
+  footer: "何意味？",
   displayFooter: true,
 
   // 博客相关

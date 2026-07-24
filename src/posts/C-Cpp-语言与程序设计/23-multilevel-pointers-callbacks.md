@@ -28,7 +28,7 @@ int **pp = &p;
 
 ```text
 pp ──指向──> p ──指向──> value
-               地址          10
+               地址                10
 ```
 
 - `p` 的类型是 `int *`；
@@ -43,8 +43,7 @@ pp ──指向──> p ──指向──> value
 下面的函数不能让调用者的 `p` 指向新内存：
 
 ```c
-void allocate_wrong(int *p)
-{
+void allocate_wrong(int *p) {
     p = malloc(sizeof *p);
 }
 ```
@@ -55,8 +54,7 @@ void allocate_wrong(int *p)
 #include <stdbool.h>
 #include <stdlib.h>
 
-bool allocate_int(int **out)
-{
+bool allocate_int(int **out) {
     if (out == NULL) return false;
 
     int *new_value = malloc(sizeof *new_value);
@@ -67,8 +65,7 @@ bool allocate_int(int **out)
     return true;
 }
 
-int main(void)
-{
+int main(void) {
     int *p = NULL;
     if (!allocate_int(&p)) return 1;
 
@@ -115,8 +112,7 @@ int (*row)[4];      // 指针，指向“包含 4 个 int 的数组”
 ## 函数也有地址
 
 ```c
-int add(int a, int b)
-{
+int add(int a, int b) {
     return a + b;
 }
 
@@ -131,8 +127,7 @@ int result = operation(3, 4);
 ```c
 typedef int (*BinaryOperation)(int, int);
 
-int calculate(int a, int b, BinaryOperation op)
-{
+int calculate(int a, int b, BinaryOperation op) {
     return op(a, b);
 }
 ```
@@ -146,8 +141,7 @@ int calculate(int a, int b, BinaryOperation op)
 
 typedef bool (*Predicate)(int value);
 
-void print_if(const int *data, size_t length, Predicate predicate)
-{
+void print_if(const int *data, size_t length, Predicate predicate) {
     if (data == NULL || predicate == NULL) return;
 
     for (size_t i = 0; i < length; i++) {
@@ -158,8 +152,7 @@ void print_if(const int *data, size_t length, Predicate predicate)
     putchar('\n');
 }
 
-bool is_even(int value)
-{
+bool is_even(int value) {
     return value % 2 == 0;
 }
 ```
@@ -186,7 +179,7 @@ typedef void (*Visitor)(int value, void *context);
 4. 回调保存了已经失效的上下文地址；
 5. 通过不兼容的函数指针类型调用函数，导致未定义行为。
 
-## 本章心智模型
+## 本章总结
 
 普通指针让函数找到调用者的对象；二级指针让函数找到调用者的“指针对象”；函数指针让程序找到一段符合约定的可执行逻辑。它们都不是魔法，只是“地址 + 类型约束”。
 
