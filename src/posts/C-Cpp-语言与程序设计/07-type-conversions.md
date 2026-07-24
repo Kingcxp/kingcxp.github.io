@@ -2,7 +2,7 @@
 title: 类型转换、整数提升与数值边界
 date: 2026-07-01
 icon: shuffle
-order: 8
+order: 7
 category:
   - C/C++ 语言与程序设计
 tag:

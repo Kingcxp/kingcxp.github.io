@@ -2,7 +2,7 @@
 title: 循环结构
 date: 2026-07-01
 icon: rotate
-order: 10
+order: 9
 category:
   - C/C++ 语言与程序设计
 tag:

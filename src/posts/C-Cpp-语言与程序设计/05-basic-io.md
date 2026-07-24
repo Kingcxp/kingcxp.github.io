@@ -2,7 +2,7 @@
 title: 基本输入与输出
 date: 2026-06-30
 icon: keyboard
-order: 6
+order: 5
 category:
   - C/C++ 语言与程序设计
 tag:
