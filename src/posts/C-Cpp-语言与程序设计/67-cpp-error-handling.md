@@ -2,7 +2,7 @@
 title: C++ 错误处理：异常、optional 与 variant
 date: 2026-07-18
 icon: triangle-exclamation
-order: 66
+order: 67
 category:
   - C/C++ 语言与程序设计
 tag:

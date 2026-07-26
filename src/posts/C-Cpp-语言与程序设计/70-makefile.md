@@ -2,7 +2,7 @@
 title: Makefile：自动化项目构建
 date: 2026-07-19
 icon: gears
-order: 69
+order: 70
 category:
   - C/C++ 语言与程序设计
 tag:

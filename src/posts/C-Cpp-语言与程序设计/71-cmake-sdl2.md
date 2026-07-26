@@ -2,7 +2,7 @@
 title: CMake 与 XMake：现代项目构建
 date: 2026-07-20
 icon: hammer
-order: 70
+order: 71
 category:
   - C/C++ 语言与程序设计
 tag:

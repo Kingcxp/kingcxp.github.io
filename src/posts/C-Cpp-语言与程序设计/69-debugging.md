@@ -2,7 +2,7 @@
 title: 程序调试：GDB 与编辑器调试
 date: 2026-07-19
 icon: bug
-order: 68
+order: 69
 category:
   - C/C++ 语言与程序设计
 tag:

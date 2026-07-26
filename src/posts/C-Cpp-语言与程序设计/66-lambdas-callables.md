@@ -2,7 +2,7 @@
 title: Lambda、可调用对象与回调
 date: 2026-07-18
 icon: bolt
-order: 65
+order: 66
 category:
   - C/C++ 语言与程序设计
 tag:
